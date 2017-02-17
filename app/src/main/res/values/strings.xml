@@ -28,6 +28,7 @@
     <string name="msg_time_for_apply_control">* به طور معمول بازکردن یا بستن درب در حدود ۱۰ ثانیه به طول می انجامد.</string>
     <string name="door_status">وضعیت درب</string>
     <string name="door_status_closed">درب پارکینگ هم اکنون بسته می باشد...</string>
+    <string name="door_status_getting">در حال گرفتن وضعیت در...</string>
     <string name="door_status_unknow">وضعیت درب نامعلوم است...</string>
     <string name="open_door">باز کردن درب</string>
     <string name="massage">پیام</string>

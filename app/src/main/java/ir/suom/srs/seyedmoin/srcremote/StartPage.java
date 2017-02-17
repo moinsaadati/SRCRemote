@@ -160,7 +160,7 @@ public class StartPage extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            WifiData data = (WifiData) intent.getParcelableExtra(Constants.WIFI_DATA);
+            WifiData data = (WifiData) intent.getParcelableExtra(Constants.KEY_WIFI_DATA);
             mWifiData = data;
             logNetworks();
         }

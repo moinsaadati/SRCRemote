@@ -13,6 +13,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 public class WifiService extends Service {
 
@@ -66,6 +67,8 @@ public class WifiService extends Service {
         @Override
         public void run() {
 
+            Log.e("WIFI", "True");
+
             if (mWifiManager.isWifiEnabled()) {
 
                 // get networks
@@ -80,8 +83,8 @@ public class WifiService extends Service {
             }
 
             // send data to UI
-            Intent intent = new Intent(Constants.INTENT_FILTER);
-            intent.putExtra(Constants.WIFI_DATA, mWifiData);
+            Intent intent = new Intent(Constants.Wifi_Service_INTENT_FILTER);
+            intent.putExtra(Constants.KEY_WIFI_DATA, mWifiData);
             LocalBroadcastManager.getInstance(WifiService.this).sendBroadcast(intent);
 
         }

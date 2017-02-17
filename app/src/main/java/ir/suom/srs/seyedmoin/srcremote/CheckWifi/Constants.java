@@ -2,8 +2,15 @@ package ir.suom.srs.seyedmoin.srcremote.CheckWifi;
 
 public class Constants {
     public static final String APP_NAME = "ANDROID_WIFI_SCANNER";
-    public static final String INTENT_FILTER = "ANDROID_WIFI_SCANNER";
-    public static final String WIFI_DATA = "WIFI_DATA";
+
+    // Wifi Service
+    public static final String Wifi_Service_INTENT_FILTER = "ANDROID_WIFI_SCANNER";
+    public static final String KEY_WIFI_DATA = "WIFI_DATA";
+
+    // Device Service
+    public static String Action_DeviceService = "device_service";
+    public static final String KEY_CurrentSSID = "current_ssid";
+    public static final String PWD = "22446688";
     public static final String AP_NAME = "parking";
     public static final String AP_NAME_EXAMPLE = "NoBoDy";
     public static final String AP_NAME_EXAMPLE2 = "sky668";
@@ -18,5 +25,4 @@ public class Constants {
     public static final String KEY_Device_Name = "key_device_name";
     public static final String KEY_IP_Address = "key_ip_address";
     public static final String KEY_Port = "key_port";
-
 }
