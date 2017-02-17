@@ -1,18 +1,17 @@
 package com.edwardvanraak.materialbarcodescanner;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -89,9 +88,10 @@ public class MaterialBarcodeScannerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Moin Saadati's Comment : Go To Enter ID Screen
                 // 2/5/17 11:52 PM
-                Intent enter = new Intent("ir.suom.srs.seyedmoin.srcremote.Device_Id");
-                startActivity(enter);
-                finish();
+
+                Dialog_DID dialog_did = new Dialog_DID();
+                dialog_did.show(getSupportFragmentManager(), "blur_dialog_did");
+
             }
         });
         setupButtons();

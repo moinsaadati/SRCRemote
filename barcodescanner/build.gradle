@@ -30,4 +30,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.google.android.gms:play-services-vision:8.4.0'
     compile 'com.android.support:design:23.0.1'
+    compile 'fr.tvbarthel.blurdialogfragment:lib:2.2.0'
 }

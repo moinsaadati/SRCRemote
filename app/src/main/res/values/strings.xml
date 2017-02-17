@@ -1,112 +1,37 @@
 <resources>
     <string name="app_name">My SRC</string>
     <string name="Scan">Scan</string>
-    <string name="Turn_On_Location">موقعیت خود را روشن کنید</string>
-    <string name="config_id_device">ID Device</string>
+    <string name="Turn_On_Location">موقعیت خود را روشن کنید.</string>
     <string name="config">Config</string>
     <string name="sync">همگام سازی</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="font_iransanz">fonts/IRANSansMobile.ttf</string>
     <string name="font_iransanz_bold">fonts/IRANSansMobile_Bold.ttf</string>
-    <string name="password">Password</string>
-    <string name="administator_panel">Administator Panel</string>
-    <string name="enter">Enter</string>
+
+    <string name="sec_code">کد امنیتی</string>
+    <string name="administator_panel">کاربر نصاب</string>
+    <string name="enter">ورود</string>
     <string name="ip_address">Ip Address</string>
     <string name="port">Port</string>
-    <string name="device_name">Device Name</string>
+    <string name="device_name">نام دستگاه</string>
     <string name="device_id">شماره سریال دستگاه</string>
     <string name="show_device_pw">نمایش رمز دستگاه</string>
-    <string name="title_activity_setting__app">Settings_App</string>
-
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
     <string name="reset_device">تنظیم مجدد دستگاه</string>
-    <string name="show_remote">Show Remote</string>
-    <string name="wifi_off">وای فای خاموش است</string>
+    <string name="show_remote">نمایش ریموت</string>
+    <string name="wifi_off">وای فای خاموش است.</string>
     <string name="smart_control_parking_door">کنترل هوشمند درب پارکینگ</string>
     <string name="sadjad_research_center">مرکز تحقیقات سجاد</string>
-    <string name="wifi_massage_OK">ارتباط با سیسیتم برقرار می باشد.</string>
+    <string name="wifi_massage_OK">ارتباط با سیستم برقرار می باشد.</string>
     <string name="wifi_massage_ERROR">ارتباط با سیستم امکان پذیر نیست.</string>
-    <string name="wifi_massage_Connecting">در حال ارتباط با سیستم ...</string>
-    <string name="msg_near_to_connect">* لطفا برای اتصال به درب پارکینگ به آن نزدیک شوید</string>
+    <string name="wifi_massage_Connecting">در حال ارتباط با سیستم...</string>
+    <string name="msg_near_to_connect">* لطفا برای اتصال به درب پارکینگ به آن نزدیک شوید.</string>
     <string name="msg_time_for_apply_control">* به طور معمول بازکردن یا بستن درب در حدود ۱۰ ثانیه به طول می انجامد.</string>
     <string name="door_status">وضعیت درب</string>
-    <string name="door_status_closed">درب پارگینگ هم اکنون بسته می باشد ...</string>
-    <string name="door_status_unknow">وضعیت درب نامعلوم است ...</string>
+    <string name="door_status_closed">درب پارکینگ هم اکنون بسته می باشد...</string>
+    <string name="door_status_unknow">وضعیت درب نامعلوم است...</string>
     <string name="open_door">باز کردن درب</string>
     <string name="massage">پیام</string>
-    <string name="please_enter_sec_code">لطفا کد امینیتی را وارد نمایید :</string>
+    <string name="please_enter_sec_code">لطفا کد امینیتی را وارد نمایید:</string>
     <string name="reset_factory">بازگشت به تنظیمات کارخانه</string>
     <string name="set_remote">تنظیمات ریموت</string>
     <string name="main_setting_device">تنظیمات اصلی دستگاه</string>

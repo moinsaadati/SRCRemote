@@ -10,26 +10,35 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/tv_please_enter_sec_code"
+        android:id="@+id/tv_enter_device_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/please_enter_sec_code"
+        android:text="@string/enter_device_id"
         android:textColor="@color/black"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_help_edi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help_devcie_id"
+        android:textColor="@color/stroke_dialog_bg"
+        android:textSize="13sp" />
 
     <EditText
-        android:id="@+id/et_pwd_adm"
+        android:id="@+id/et_device_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@android:color/transparent"
         android:cursorVisible="false"
-        android:hint="@string/password"
-        android:inputType="numberPassword"
-        android:maxLength="4"
+        android:hint="@string/device_id_en"
+        android:inputType="text"
+        android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textColorHint="@color/text_black" />
+        android:textColorHint="@color/stroke_dialog_bg"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"

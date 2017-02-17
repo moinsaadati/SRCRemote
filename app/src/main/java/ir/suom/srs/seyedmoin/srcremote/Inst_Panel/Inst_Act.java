@@ -83,6 +83,7 @@ public class Inst_Act extends AppCompatActivity {
         tv_massage_wifi = (TextView) findViewById(R.id.tv_massage_wifi);
         iv_massage_wifi = (ImageView) findViewById(R.id.iv_massage_wifi);
         iv_icon = (ImageView) findViewById(R.id.iv_icon);
+        iv_icon.setClickable(false);
 
         tv_main_setting_device = (TextView) findViewById(R.id.tv_main_setting_device);
         btn_option1 = (Button) findViewById(R.id.btn_option_1);

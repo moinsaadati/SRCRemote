@@ -28,13 +28,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Device_ID">
-            <intent-filter>
-                <action android:name="ir.suom.srs.seyedmoin.srcremote.Device_Id" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <service android:name=".CheckWifi.WifiService" />
 
@@ -47,7 +40,7 @@
         </activity>
         <activity
             android:name=".Inst_Panel.Inst_Act"
-            android:label="@string/title_activity_setting__app">
+            android:label="@string/administator_panel">
             <intent-filter>
                 <action android:name="ir.suom.srs.seyedmoin.srcremote.Inst_Act" />
 

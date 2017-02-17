@@ -1,8 +1,12 @@
 <resources>
     <string name="library_name">MaterialBarcodeScanner</string>
-    <string name="permission_camera_rationale">Access to the camera is needed for barcode detection.</string>
-    <string name="no_camera_permission">Cannot start the barcode reader because the camera permission was not granted.</string>
     <string name="enterId_text">یا از اینجا شماره سریال دستگاه را \n به صورت دستی وارد کنید</string>
     <string name="barcode_camera">لطفا دوربین را در مقابل بارکد دستگاه \n قرار دهید</string>
     <string name="font_iransanz">fonts/IRANSansMobile.ttf</string>
+    <string name="enter_device_id">شماره سریال دستگاه را وارد نمایید:</string>
+    <string name="device_id">شماره سریال دستگاه</string>
+    <string name="device_id_en">Device ID</string>
+    <string name="help_devcie_id">این شماره سریال بر روی کنترل کننده ی درب درج شده است.</string>
+    <string name="no_camera_permission">به علت نداشتن مچوز برای استفاده از دوربین این امکان غیر فعال است.</string>
+    <string name="permission_camera_rationale">مجوز دوربین صادر نشده است.</string>
 </resources>

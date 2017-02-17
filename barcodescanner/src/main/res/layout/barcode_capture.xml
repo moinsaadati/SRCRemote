@@ -76,7 +76,7 @@
         android:layout_marginBottom="35dp"
         android:text="@string/enterId_text"
         android:textAlignment="center"
-        android:textColor="@color/orange500"
+        android:textColor="@color/orange_500"
         android:textSize="16dp" />
 
 </FrameLayout>

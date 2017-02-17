@@ -3,7 +3,6 @@ package ir.suom.srs.seyedmoin.srcremote;
 import android.graphics.Typeface;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ir.suom.srs.seyedmoin.srcremote.Dialog.Adm_Dialog;
+import ir.suom.srs.seyedmoin.srcremote.Dialog.DInst_Auth;
 import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
 
 
@@ -77,7 +76,7 @@ public class MainPage extends AppCompatActivity {
 
         tv_Device_status.setTypeface(tp);
         tv_massage.setTypeface(tp);
-        btn_Control.setTypeface(tp);
+        btn_Control.setTypeface(tp_bold);
 
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
@@ -108,7 +107,7 @@ public class MainPage extends AppCompatActivity {
         if (v.getId() == R.id.iv_icon) {
             ShowDailog();
 
-         /*   // Go To Adm_Dialog  After 20 Time Tap
+         /*   // Go To DInst_Auth  After 20 Time Tap
             timetap++;
             Handler handler = new Handler();
             Runnable r = new Runnable() {
@@ -131,8 +130,8 @@ public class MainPage extends AppCompatActivity {
 
     private void ShowDailog() {
 
-        Adm_Dialog adm_dialog = new Adm_Dialog();
-        adm_dialog.show(getFragmentManager(), "admin_dialog");
+        DInst_Auth adm_dialog = DInst_Auth.newInstance(8, 4f, false, false);
+        adm_dialog.show(getSupportFragmentManager(), "admin_dialog");
 
     }
 
