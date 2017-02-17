@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ir.suom.srs.seyedmoin.srcremote.Dialog.DReset_Device;
+import ir.suom.srs.seyedmoin.srcremote.Dialog.DShow_DID;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
 public class Inst_Act extends AppCompatActivity {
@@ -40,9 +42,9 @@ public class Inst_Act extends AppCompatActivity {
         btn_option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Dialog for ResetDevice
+                // Dialog for Reset Factory Device
                 Toast.makeText(getBaseContext(), "Reset Device", Toast.LENGTH_SHORT).show();
-                ResetDevice();
+                ResetFactory();
             }
         });
 
@@ -63,11 +65,18 @@ public class Inst_Act extends AppCompatActivity {
         });
     }
 
-    private void ResetDevice() {
+    private void ResetFactory() {
+
+        DReset_Device dReset_device = DReset_Device.newInstance(8, 4f, false, false);
+        dReset_device.show(getSupportFragmentManager(), "DReset_Device");
+
     }
 
     private void ShowDeviceID() {
-        Toast.makeText(getBaseContext(), "Device ID", Toast.LENGTH_SHORT).show();
+
+        DShow_DID dShow_did = DShow_DID.newInstance(8, 4f, false, false);
+        dShow_did.show(getSupportFragmentManager(), "DShow_DID");
+
     }
 
 

@@ -10,35 +10,32 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/tv_title_reset_device"
+        android:id="@+id/tv_title_show_did"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_reset_factory"
+        android:text="@string/device_id"
         android:textColor="@color/black"
         android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/tv_for_reset_device"
+        android:id="@+id/tv_show_did"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/msg_for_reset_device"
+        android:text="@string/msg_for_show_did"
         android:textColor="@color/black"
-        android:textSize="13dp" />
+        android:textSize="13sp" />
 
-    <EditText
-        android:id="@+id/et_reset"
+    <TextView
+        android:id="@+id/tv_device_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:background="@android:color/transparent"
-        android:cursorVisible="false"
-        android:hint="@string/reset_en"
-        android:inputType="numberPassword"
-        android:maxLength="5"
+        android:text="@string/device_id"
         android:textAlignment="center"
-        android:textAllCaps="true"
         android:textColor="@color/black"
         android:textColorHint="@color/text_black"
+        android:textSize="17sp"
         android:textStyle="bold" />
 
     <View
@@ -46,15 +43,5 @@
         android:layout_height="1dp"
         android:layout_marginBottom="15dp"
         android:background="@color/grey400" />
-
-    <Button
-        android:id="@+id/btn_reset_factory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_scan"
-        android:text="@string/reset"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
 
 </LinearLayout>

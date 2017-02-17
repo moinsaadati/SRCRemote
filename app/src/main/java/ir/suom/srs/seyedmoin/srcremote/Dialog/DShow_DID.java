@@ -2,32 +2,33 @@ package ir.suom.srs.seyedmoin.srcremote.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment;
-import ir.suom.srs.seyedmoin.srcremote.Inst_Panel.Inst_Act;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
-public class DInst_Auth extends SupportBlurDialogFragment {
+/**
+ * Created by seyedmoin on 2/17/17.
+ */
 
-    // Moin Saadati's Comment : Dialog For Authentication Instellar
-    // 2/14/17 3:30 PM
-    private EditText et_pwd;
-    private TextView tv_please_enter_sec_code;
+public class DShow_DID extends SupportBlurDialogFragment {
+
+    // Moin Saadati's Comment : Dialog For ResetDevice
+    // 2/17/17 7:11 PM
+
+    TextView tv_title_show_did, tv_show_did, tv_device_id;
 
     private static final String BUNDLE_KEY_DOWN_SCALE_FACTOR = "bundle_key_down_scale_factor";
     private static final String BUNDLE_KEY_BLUR_RADIUS = "bundle_key_blur_radius";
@@ -38,8 +39,8 @@ public class DInst_Auth extends SupportBlurDialogFragment {
     private boolean mDimming;
     private boolean mDebug;
 
-    public static DInst_Auth newInstance(int radius, float downScaleFactor, boolean dimming, boolean debug) {
-        DInst_Auth fragment = new DInst_Auth();
+    public static DShow_DID newInstance(int radius, float downScaleFactor, boolean dimming, boolean debug) {
+        DShow_DID fragment = new DShow_DID();
         Bundle args = new Bundle();
         args.putInt(BUNDLE_KEY_BLUR_RADIUS, radius);
         args.putFloat(BUNDLE_KEY_DOWN_SCALE_FACTOR, downScaleFactor);
@@ -69,12 +70,13 @@ public class DInst_Auth extends SupportBlurDialogFragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         //tp = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.font_iransanz));
-        View rootView = inflater.inflate(R.layout.layout_dialog_d_inst_auth, container, false);
+        View rootView = inflater.inflate(R.layout.layout_dialog_show_did, container, false);
 
         return rootView;
     }
@@ -87,36 +89,16 @@ public class DInst_Auth extends SupportBlurDialogFragment {
 
         Typeface tp = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.font_iransanz));
 
-        et_pwd = (EditText) view.findViewById(R.id.et_pwd_adm);
-        tv_please_enter_sec_code = (TextView) view.findViewById(R.id.tv_please_enter_sec_code);
+        tv_device_id = (TextView) view.findViewById(R.id.tv_device_id);
+        tv_show_did = (TextView) view.findViewById(R.id.tv_show_did);
+        tv_title_show_did = (TextView) view.findViewById(R.id.tv_title_show_did);
 
-        et_pwd.setTypeface(tp);
-        tv_please_enter_sec_code.setTypeface(tp);
+        tv_device_id.setTypeface(tp);
+        tv_title_show_did.setTypeface(tp);
+        tv_show_did.setTypeface(tp);
 
-        et_pwd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // nothing
-            }
+        tv_device_id.setText("6SD78SDGV4zxi");
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // nothing
-                String pwd = et_pwd.getText().toString();
-                // Go To Installer Panel
-                if (pwd.equals("1234")) {
-                    Intent installer_act = new Intent(getActivity(), Inst_Act.class);
-                    startActivity(installer_act);
-                    getDialog().dismiss();
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                // nothing
-            }
-        });
 
     }
 
@@ -137,4 +119,6 @@ public class DInst_Auth extends SupportBlurDialogFragment {
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
+
+
 }

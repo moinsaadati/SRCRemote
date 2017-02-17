@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +23,18 @@ import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment;
 import ir.suom.srs.seyedmoin.srcremote.Inst_Panel.Inst_Act;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
+/**
+ * Created by seyedmoin on 2/17/17.
+ */
+
 public class DReset_Device extends SupportBlurDialogFragment {
 
     // Moin Saadati's Comment : Dialog For ResetDevice
-    // 2/14/17 3:30 PM
-    private EditText et_pwd;
-    private TextView tv_please_enter_sec_code;
+    // 2/17/17 7:11 PM
+
+    TextView tv_title_reset_device, tv_for_reset_device;
+    EditText et_reset;
+    Button btn_reset_factory;
 
     private static final String BUNDLE_KEY_DOWN_SCALE_FACTOR = "bundle_key_down_scale_factor";
     private static final String BUNDLE_KEY_BLUR_RADIUS = "bundle_key_blur_radius";
@@ -69,6 +76,7 @@ public class DReset_Device extends SupportBlurDialogFragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,35 +95,21 @@ public class DReset_Device extends SupportBlurDialogFragment {
 
         Typeface tp = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.font_iransanz));
 
-        et_pwd = (EditText) view.findViewById(R.id.et_pwd_adm);
-        tv_please_enter_sec_code = (TextView) view.findViewById(R.id.tv_please_enter_sec_code);
+        tv_for_reset_device = (TextView) view.findViewById(R.id.tv_for_reset_device);
+        tv_title_reset_device = (TextView) view.findViewById(R.id.tv_title_reset_device);
+        et_reset = (EditText) view.findViewById(R.id.et_reset);
+        btn_reset_factory = (Button) view.findViewById(R.id.btn_reset_factory);
 
-        et_pwd.setTypeface(tp);
-        tv_please_enter_sec_code.setTypeface(tp);
+        tv_for_reset_device.setTypeface(tp);
+        tv_title_reset_device.setTypeface(tp);
+        btn_reset_factory.setTypeface(tp);
 
-        et_pwd.addTextChangedListener(new TextWatcher() {
+
+        btn_reset_factory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // nothing
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // nothing
-                String pwd = et_pwd.getText().toString();
-                // Go To Installer Panel
-                if (pwd.equals("1234")) {
-                    Toast.makeText(getActivity().getBaseContext(), "You Are Installer", Toast.LENGTH_SHORT).show();
-                    Intent installer_act = new Intent(getActivity(), Inst_Act.class);
-                    startActivity(installer_act);
-                    getDialog().dismiss();
-
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                // nothing
+            public void onClick(View view) {
+                // Reset Factory Device
+                Toast.makeText(getActivity().getBaseContext(), R.string.reset_device_successfully, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -138,4 +132,6 @@ public class DReset_Device extends SupportBlurDialogFragment {
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
+
+
 }

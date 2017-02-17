@@ -35,4 +35,10 @@
     <string name="reset_factory">بازگشت به تنظیمات کارخانه</string>
     <string name="set_remote">تنظیمات ریموت</string>
     <string name="main_setting_device">تنظیمات اصلی دستگاه</string>
+    <string name="msg_for_reset_device">برای ریست دستگاه کلمه ی Reset را در کادر زیر بنویسید و دکمه ریست را بفشارید.</string>
+    <string name="title_reset_factory">ریست دستگاه</string>
+    <string name="reset">ریست</string>
+    <string name="reset_en">Reset</string>
+    <string name="reset_device_successfully">دستگاه ریست شد.</string>
+    <string name="msg_for_show_did">برای کپی کردن متن دست خود را روی شماره سریال نگه دارید.</string>
 </resources>
