@@ -58,20 +58,24 @@ public class MainPage extends AppCompatActivity {
     private void Initialization() {
 
         Typeface tp = Typeface.createFromAsset(getAssets(), getString(R.string.font_iransanz));
+        Typeface tp_bold = Typeface.createFromAsset(getAssets(), getString(R.string.font_iransanz_bold));
 
         btn_Control = (Button) findViewById(R.id.btn_control);
         tv_Device_status = (TextView) findViewById(R.id.tv_device_status);
+        tv_massage = (TextView) findViewById(R.id.tv_massage);
+
+        // Action Bar
         tv_sadjad_research_center = (TextView) findViewById(R.id.tv_sadjad_research_center);
         tv_control_smart = (TextView) findViewById(R.id.tv_control_smart);
         tv_massage_wifi = (TextView) findViewById(R.id.tv_massage_wifi);
         iv_massage_wifi = (ImageView) findViewById(R.id.iv_massage_wifi);
-        tv_massage = (TextView) findViewById(R.id.tv_massage);
         iv_icon = (ImageView) findViewById(R.id.iv_icon);
 
-        tv_Device_status.setTypeface(tp);
-        tv_sadjad_research_center.setTypeface(tp);
-        tv_control_smart.setTypeface(tp);
+        tv_sadjad_research_center.setTypeface(tp_bold);
+        tv_control_smart.setTypeface(tp_bold);
         tv_massage_wifi.setTypeface(tp);
+
+        tv_Device_status.setTypeface(tp);
         tv_massage.setTypeface(tp);
         btn_Control.setTypeface(tp);
 
@@ -102,7 +106,9 @@ public class MainPage extends AppCompatActivity {
 
     public void Action_Administorator(View v) {
         if (v.getId() == R.id.iv_icon) {
-            // Go To Adm_Dialog  After 5 Time Tap
+            ShowDailog();
+
+         /*   // Go To Adm_Dialog  After 20 Time Tap
             timetap++;
             Handler handler = new Handler();
             Runnable r = new Runnable() {
@@ -118,8 +124,9 @@ public class MainPage extends AppCompatActivity {
             } else if (timetap == 20) {
                 timetap = 0;
                 ShowDailog();
-            }
+            }*/
         }
+
     }
 
     private void ShowDailog() {

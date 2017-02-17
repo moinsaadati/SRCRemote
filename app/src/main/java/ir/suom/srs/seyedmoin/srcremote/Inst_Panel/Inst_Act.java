@@ -1,10 +1,13 @@
 package ir.suom.srs.seyedmoin.srcremote.Inst_Panel;
 
+import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ir.suom.srs.seyedmoin.srcremote.R;
@@ -15,6 +18,9 @@ public class Inst_Act extends AppCompatActivity {
     // 2/14/17 5:18 PM
     Button btn_option1, btn_option2, btn_option3, btn_option4;
     WifiManager wifiManager;
+
+    TextView tv_control_smart, tv_sadjad_research_center, tv_massage_wifi, tv_main_setting_device;
+    ImageView iv_massage_wifi, iv_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +73,41 @@ public class Inst_Act extends AppCompatActivity {
 
     private void Initilization() {
 
+        Typeface tp = Typeface.createFromAsset(getAssets(), getString(R.string.font_iransanz));
+        Typeface tp_bold = Typeface.createFromAsset(getAssets(), getString(R.string.font_iransanz_bold));
+
+
+        // Action Bar
+        tv_sadjad_research_center = (TextView) findViewById(R.id.tv_sadjad_research_center);
+        tv_control_smart = (TextView) findViewById(R.id.tv_control_smart);
+        tv_massage_wifi = (TextView) findViewById(R.id.tv_massage_wifi);
+        iv_massage_wifi = (ImageView) findViewById(R.id.iv_massage_wifi);
+        iv_icon = (ImageView) findViewById(R.id.iv_icon);
+
+        tv_main_setting_device = (TextView) findViewById(R.id.tv_main_setting_device);
         btn_option1 = (Button) findViewById(R.id.btn_option_1);
         btn_option2 = (Button) findViewById(R.id.btn_option_2);
         btn_option3 = (Button) findViewById(R.id.btn_option_3);
         btn_option4 = (Button) findViewById(R.id.btn_option_4);
+
+        // Action Bar
+        tv_sadjad_research_center = (TextView) findViewById(R.id.tv_sadjad_research_center);
+        tv_control_smart = (TextView) findViewById(R.id.tv_control_smart);
+        tv_massage_wifi = (TextView) findViewById(R.id.tv_massage_wifi);
+        iv_massage_wifi = (ImageView) findViewById(R.id.iv_massage_wifi);
+        iv_icon = (ImageView) findViewById(R.id.iv_icon);
+        tv_massage_wifi.setVisibility(View.GONE);
+        iv_massage_wifi.setVisibility(View.GONE);
+
+        tv_sadjad_research_center.setTypeface(tp_bold);
+        tv_control_smart.setTypeface(tp_bold);
+
+        tv_main_setting_device.setTypeface(tp);
+        btn_option1.setTypeface(tp);
+        btn_option2.setTypeface(tp);
+        btn_option3.setTypeface(tp);
+        btn_option4.setTypeface(tp);
+
 
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 

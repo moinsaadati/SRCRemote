@@ -11,5 +11,7 @@
     <color name="orange_text">#F2BD2E</color>
     <color name="red_text">#FA3035</color>
     <color name="status_color">#FF5A6E</color>
+    <color name="dialog_bg">#F4F4F4</color>
+    <color name="stroke_dialog_bg">#585858</color>
 
 </resources>

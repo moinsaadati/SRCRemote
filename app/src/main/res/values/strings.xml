@@ -9,13 +9,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="font_iransanz">fonts/IRANSansMobile.ttf</string>
+    <string name="font_iransanz_bold">fonts/IRANSansMobile_Bold.ttf</string>
     <string name="password">Password</string>
     <string name="administator_panel">Administator Panel</string>
     <string name="enter">Enter</string>
     <string name="ip_address">Ip Address</string>
     <string name="port">Port</string>
     <string name="device_name">Device Name</string>
-    <string name="device_id">Device Id</string>
+    <string name="device_id">شماره سریال دستگاه</string>
+    <string name="show_device_pw">نمایش رمز دستگاه</string>
     <string name="title_activity_setting__app">Settings_App</string>
 
     <!-- Strings related to Settings -->
@@ -89,8 +91,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="set_device">Set Device</string>
-    <string name="reset_device">Reset Device</string>
+    <string name="reset_device">تنظیم مجدد دستگاه</string>
     <string name="show_remote">Show Remote</string>
     <string name="wifi_off">وای فای خاموش است</string>
     <string name="smart_control_parking_door">کنترل هوشمند درب پارکینگ</string>
@@ -105,4 +106,8 @@
     <string name="door_status_unknow">وضعیت درب نامعلوم است ...</string>
     <string name="open_door">باز کردن درب</string>
     <string name="massage">پیام</string>
+    <string name="please_enter_sec_code">لطفا کد امینیتی را وارد نمایید :</string>
+    <string name="reset_factory">بازگشت به تنظیمات کارخانه</string>
+    <string name="set_remote">تنظیمات ریموت</string>
+    <string name="main_setting_device">تنظیمات اصلی دستگاه</string>
 </resources>

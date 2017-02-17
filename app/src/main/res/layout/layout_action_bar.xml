@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center_vertical|right"
             android:orientation="vertical">
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_gravity="right"
                 android:text="@string/smart_control_parking_door"
                 android:textColor="@color/black"
-                android:textSize="24dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/tv_sadjad_research_center"
@@ -55,7 +55,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@color/grey400" />
 
     <LinearLayout
@@ -69,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wifi_massage_OK"
-            android:textColor="@color/green_text" />
+            android:textColor="@color/green_text"
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/iv_massage_wifi"

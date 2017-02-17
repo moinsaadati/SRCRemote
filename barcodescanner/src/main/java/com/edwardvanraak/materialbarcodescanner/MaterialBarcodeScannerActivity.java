@@ -89,7 +89,7 @@ public class MaterialBarcodeScannerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Moin Saadati's Comment : Go To Enter ID Screen
                 // 2/5/17 11:52 PM
-                Intent enter = new Intent("ir.suom.srs.seyedmoin.srcremote.ConfigAP");
+                Intent enter = new Intent("ir.suom.srs.seyedmoin.srcremote.Device_Id");
                 startActivity(enter);
                 finish();
             }

@@ -1,30 +1,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/edit_name"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/grey200"
+    android:layout_margin="15dp"
+    android:background="@drawable/dialog_bg"
+    android:gravity="right"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="20dp">
 
     <TextView
-        android:id="@+id/lbl_your_name"
+        android:id="@+id/tv_please_enter_sec_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/administator_panel" />
+        android:text="@string/please_enter_sec_code"
+        android:textColor="@color/black"
+        android:textSize="17dp" />
 
     <EditText
         android:id="@+id/et_pwd_adm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:cursorVisible="false"
         android:hint="@string/password"
         android:inputType="numberPassword"
-        android:maxLength="4" />
+        android:maxLength="4"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text_black" />
 
-    <Button
-        android:id="@+id/btn_enter"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter" />
+        android:layout_height="1dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/grey400" />
+
+
 </LinearLayout>

@@ -14,18 +14,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity
-            android:name=".OrgActivity"
-            android:theme="@style/AppTheme">
+        <activity android:name=".OrgActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".StartPage"
-            android:theme="@style/AppTheme">
+        <activity android:name=".StartPage">
             <intent-filter>
                 <action android:name="ir.suom.srs.seyedmoin.srcremote.StartPage" />
 
@@ -42,9 +38,7 @@
 
         <service android:name=".CheckWifi.WifiService" />
 
-        <activity
-            android:name=".MainPage"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainPage">
             <intent-filter>
                 <action android:name="ir.suom.srs.seyedmoin.srcremote.MainPage" />
 

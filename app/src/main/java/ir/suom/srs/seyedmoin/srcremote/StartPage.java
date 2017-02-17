@@ -58,7 +58,7 @@ public class StartPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+               WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mWifiData = null;
 
@@ -133,23 +133,25 @@ public class StartPage extends AppCompatActivity {
     private void logNetworks() {
         Log.d("logNetworks:", "--------------------------");
 
-        if (mWifiData.getNetworks().size() == 0) {
-            Log.e("logNetworks:", "Turn On Location");
-            tv_TurnOnLocation.setVisibility(View.VISIBLE);
-            btn_Scan.setVisibility(View.INVISIBLE);
-            tv_wifi_off.setVisibility(View.INVISIBLE);
-        } else {
-            tv_TurnOnLocation.setVisibility(View.INVISIBLE);
-            btn_Scan.setVisibility(View.VISIBLE);
-            tv_wifi_off.setVisibility(View.INVISIBLE);
-        }
-        for (WifiDataNetwork sr : mWifiData.getNetworks()) {
-            Log.d("logNetworks:", sr.getSsid());
-            if (sr.getSsid().equals(Constants.AP_NAME_EXAMPLE)) {
-                tv_TurnOnLocation.setVisibility(View.INVISIBLE);
-                btn_Scan.setVisibility(View.VISIBLE);
+        if (wifiManager.isWifiEnabled()) {
+            if (mWifiData.getNetworks().size() == 0 || mWifiData == null) {
+                tv_TurnOnLocation.setVisibility(View.VISIBLE);
                 tv_wifi_off.setVisibility(View.INVISIBLE);
+                btn_Scan.setVisibility(View.INVISIBLE);
+            } else {
+                for (WifiDataNetwork sr : mWifiData.getNetworks()) {
+                    Log.d("logNetworks:", sr.getSsid());
+                    if (sr.getSsid().equals(Constants.AP_NAME_EXAMPLE)) {
+                        btn_Scan.setVisibility(View.VISIBLE);
+                        tv_TurnOnLocation.setVisibility(View.INVISIBLE);
+                        tv_wifi_off.setVisibility(View.INVISIBLE);
+                    }
+                }
             }
+        } else {
+            tv_wifi_off.setVisibility(View.VISIBLE);
+            tv_TurnOnLocation.setVisibility(View.INVISIBLE);
+            btn_Scan.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -159,10 +161,8 @@ public class StartPage extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             WifiData data = (WifiData) intent.getParcelableExtra(Constants.WIFI_DATA);
-            if (data != null) {
-                mWifiData = data;
-                logNetworks();
-            }
+            mWifiData = data;
+            logNetworks();
         }
     }
 

@@ -65,21 +65,18 @@ public class WifiService extends Service {
     class ScheduleReader implements Runnable {
         @Override
         public void run() {
-            // get networks
-            List<ScanResult> mResults = mWifiManager.getScanResults();
 
             if (mWifiManager.isWifiEnabled()) {
+
+                // get networks
+                List<ScanResult> mResults = mWifiManager.getScanResults();
                 //Log.d(TAG, "New scan result: (" + mResults.size() + ") networks found");
 
                 // Moin Saadati's Comment : if @link mResults.size() == 0 : MSG : Turn On Location
                 // 2/10/17 4:16 PM
                 // Store Networks
-                if (mResults != null)
-                    mWifiData.addNetworks(mResults);
+                mWifiData.addNetworks(mResults);
 
-            } else {
-                // if wifi is off return null object
-                mWifiData.addNetworks(null);
             }
 
             // send data to UI

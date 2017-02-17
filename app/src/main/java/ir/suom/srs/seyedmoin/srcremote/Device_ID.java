@@ -17,6 +17,7 @@ public class Device_ID extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_activity_device_id);
 
         Initialization();
