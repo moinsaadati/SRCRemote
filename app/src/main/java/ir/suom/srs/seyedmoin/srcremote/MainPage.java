@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -166,9 +167,8 @@ public class MainPage extends AppCompatActivity {
 
     public void Action_Administorator(View v) {
         if (v.getId() == R.id.iv_icon) {
-            ShowDailog();
 
-         /*   // Go To DInst_Auth  After 20 Time Tap
+            // Go To DInst_Auth  After 20 Time Tap
             timetap++;
             Handler handler = new Handler();
             Runnable r = new Runnable() {
@@ -184,7 +184,7 @@ public class MainPage extends AppCompatActivity {
             } else if (timetap == 20) {
                 timetap = 0;
                 ShowDailog();
-            }*/
+            }
         }
 
     }

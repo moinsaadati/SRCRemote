@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -36,6 +38,17 @@ public class DeviceService extends Service {
 
         scheduleReaderHandle = mScheduler.scheduleAtFixedRate(new ScheduleReader(), initial_Delay, period_Reader,
                 TimeUnit.MILLISECONDS);
+
+
+        List<WifiConfiguration> list = mWifiManager.getConfiguredNetworks();
+        for (WifiConfiguration i : list) {
+            if (i.SSID.equals("\"" + Constants.AP_NAME_EXAMPLE + "\"")) {
+                Log.e("Remove_WC", "True");
+                mWifiManager.removeNetwork(i.networkId);
+            }
+            mWifiManager.saveConfiguration();
+        }
+
     }
 
     @Nullable

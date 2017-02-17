@@ -86,9 +86,9 @@ public class MaterialBarcodeScannerActivity extends AppCompatActivity {
         EnterIdTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Moin Saadati's Comment : Go To Enter ID Screen
                 // 2/5/17 11:52 PM
-
                 Dialog_DID dialog_did = new Dialog_DID();
                 dialog_did.show(getSupportFragmentManager(), "blur_dialog_did");
 
