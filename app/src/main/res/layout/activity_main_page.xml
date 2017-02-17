@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ir.suom.srs.seyedmoin.srcremote.MainPage">
+
+    <include layout="@layout/layout_action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_device_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/door_status"
+            android:textColor="@color/black"
+            android:textSize="19dp" />
+
+        <Button
+            android:id="@+id/btn_control"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_scan"
+            android:text="@string/open_door"
+            android:textColor="@color/grey200"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_massage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/msg_near_to_connect"
+        android:textColor="@color/text_black"
+        android:textSize="19dp" />
+
+</FrameLayout>
