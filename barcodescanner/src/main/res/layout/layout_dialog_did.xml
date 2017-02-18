@@ -37,7 +37,7 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textColorHint="@color/stroke_dialog_bg"
+        android:textColorHint="@color/grey400"
         android:textStyle="bold" />
 
     <View

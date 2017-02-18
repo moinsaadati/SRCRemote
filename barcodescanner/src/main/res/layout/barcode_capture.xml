@@ -41,7 +41,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:src="@drawable/barcode_tracker" />
+        android:src="@drawable/barcode_tracker_low" />
 
     <TextView
         android:id="@+id/topText"

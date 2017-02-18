@@ -9,10 +9,10 @@ public class Constants {
 
     // Device Service
     public static String Action_DeviceService = "device_service";
-    public static final String KEY_CurrentSSID = "current_ssid";
+    public static final String KEY_FLAG = "flag_connect";
     public static final String AP_NAME = "parking";
-    public static final String AP_NAME_EXAMPLE = "test";
-    public static final String AP_NAME_EXAMPLE1 = "NoBoDy";
+    public static final String AP_NAME_EXAMPLE = "test_src";
+    public static final String AP_NAME_EXAMPLE1 = "test";
     public static final String AP_NAME_EXAMPLE2 = "seyedmoin";
 
     // Socket Properties

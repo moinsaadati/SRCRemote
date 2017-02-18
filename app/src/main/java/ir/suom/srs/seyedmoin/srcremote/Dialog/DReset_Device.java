@@ -81,7 +81,6 @@ public class DReset_Device extends SupportBlurDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //tp = Typeface.createFromAsset(getContext().getAssets(), getContext().getString(R.string.font_iransanz));
         View rootView = inflater.inflate(R.layout.layout_dialog_reset_device, container, false);
 
         return rootView;
@@ -98,19 +97,19 @@ public class DReset_Device extends SupportBlurDialogFragment {
 
         tv_for_reset_device = (TextView) view.findViewById(R.id.tv_for_reset_device);
         tv_title_reset_device = (TextView) view.findViewById(R.id.tv_title_reset_device);
-        et_reset = (EditText) view.findViewById(R.id.et_reset);
+        et_reset = (EditText) view.findViewById(R.id.et_reset_device);
         btn_reset_factory = (Button) view.findViewById(R.id.btn_reset_factory);
 
         tv_for_reset_device.setTypeface(tp);
         tv_title_reset_device.setTypeface(tp_bold);
         btn_reset_factory.setTypeface(tp);
 
-
         btn_reset_factory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Reset Factory Device
-                Toast.makeText(getActivity().getBaseContext(), R.string.reset_device_successfully, Toast.LENGTH_SHORT).show();
+                if (et_reset.getText().toString().equals("Reset") || et_reset.getText().toString().equals("reset"))
+                    Toast.makeText(getActivity().getBaseContext(), R.string.reset_device_successfully, Toast.LENGTH_SHORT).show();
             }
         });
 

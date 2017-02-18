@@ -14,6 +14,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,7 @@ public class StartPage extends AppCompatActivity {
     private WifiManager wifiManager;
 
     Intent wifi_service;
+    boolean has_service;
 
     GifDrawable gifDrawable;
     GifImageView start_gif;
@@ -75,20 +77,20 @@ public class StartPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        has_service = false;
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
         local_pref = getSharedPreferences(Constants.Pref_Name, MODE_PRIVATE);
 
         setContentView(R.layout.activity_start_page);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !hasPermissions(this, global_permissions)) {
             requestPermissions(global_permissions, REQUEST_GLOBAL_PERMINSSIONS_CODE);
         } else {
-
             String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
             if (pwd.isEmpty()) {
                 FunctionStartPage();
@@ -135,6 +137,8 @@ public class StartPage extends AppCompatActivity {
 
     private void FunctionStartPage() {
 
+        has_service = true;
+
         Log.e("StartPage:", "TRUE");
 
         mWifiData = null;
@@ -180,6 +184,8 @@ public class StartPage extends AppCompatActivity {
     private void logNetworks() {
         Log.d("logNetworks:", "--------------------------");
 
+        boolean find = false;
+
         if (wifiManager.isWifiEnabled()) {
             if (mWifiData.getNetworks().size() == 0 || mWifiData == null) {
                 tv_TurnOnLocation.setVisibility(View.VISIBLE);
@@ -192,10 +198,22 @@ public class StartPage extends AppCompatActivity {
                         btn_Scan.setVisibility(View.VISIBLE);
                         tv_TurnOnLocation.setVisibility(View.INVISIBLE);
                         tv_wifi_off.setVisibility(View.INVISIBLE);
+                        find = true;
+                        Log.e("FIND:", "TRUE");
+                        break;
                     }
                 }
+
+                if (!find) {
+                    tv_wifi_off.setText(R.string.not_find_devcie);
+                    tv_wifi_off.setVisibility(View.VISIBLE);
+                    tv_TurnOnLocation.setVisibility(View.INVISIBLE);
+                    btn_Scan.setVisibility(View.INVISIBLE);
+                }
+
             }
         } else {
+            tv_wifi_off.setText(R.string.wifi_off);
             tv_wifi_off.setVisibility(View.VISIBLE);
             tv_TurnOnLocation.setVisibility(View.INVISIBLE);
             btn_Scan.setVisibility(View.INVISIBLE);
@@ -283,14 +301,30 @@ public class StartPage extends AppCompatActivity {
     // 2/10/17 4:51 PM
     @Override
     public void onPause() {
-        //stopService(wifi_service);
+        if (has_service)
+            stopService(wifi_service);
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        //stopService(wifi_service);
+        if (has_service)
+            stopService(wifi_service);
         super.onDestroy();
+    }
+
+
+    // For requestPermission On Time
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

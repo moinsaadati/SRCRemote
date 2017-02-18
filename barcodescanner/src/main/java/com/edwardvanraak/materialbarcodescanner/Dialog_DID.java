@@ -70,7 +70,7 @@ public class Dialog_DID extends DialogFragment {
                 if (et.endsWith("@")) {
                     Intent main_act = new Intent("ir.suom.srs.seyedmoin.srcremote.MainPage");
                     main_act.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    main_act.putExtra("response", et.substring(0, et.length() - 2));
+                    main_act.putExtra("response", et.substring(0, et.length() - 1));
                     startActivity(main_act);
                     getActivity().finish();
                 }

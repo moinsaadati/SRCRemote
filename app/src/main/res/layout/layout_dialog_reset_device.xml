@@ -23,20 +23,16 @@
         android:layout_height="wrap_content"
         android:text="@string/msg_for_reset_device"
         android:textColor="@color/black"
-        android:textSize="13dp" />
+        android:textSize="13sp" />
 
     <EditText
-        android:id="@+id/et_reset"
+        android:id="@+id/et_reset_device"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:background="@android:color/transparent"
-        android:cursorVisible="false"
-        android:maxLength="5"
         android:textAlignment="center"
-        android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textColorHint="@color/text_black"
         android:textStyle="bold" />
 
     <View

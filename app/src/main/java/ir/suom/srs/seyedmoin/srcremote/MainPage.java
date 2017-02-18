@@ -42,7 +42,6 @@ public class MainPage extends AppCompatActivity {
     Intent device_service;
     MainPage.DeviceReceiver dReceiver;
     IntentFilter intentFilter;
-    String CurrentSSID;
 
     // SharedPreference
     SharedPreferences local_pref;
@@ -77,7 +76,6 @@ public class MainPage extends AppCompatActivity {
             Log.e("Device ID:", getIntent().getStringExtra("response"));
             local_pref_edit.putString(Constants.KEY_Device_ID, getIntent().getStringExtra("response"));
             local_pref_edit.commit();
-            Toast.makeText(getBaseContext(), local_pref.getString(Constants.KEY_Device_ID, ""), Toast.LENGTH_LONG).show();
         }
 
         setContentView(R.layout.activity_main_page);
@@ -125,29 +123,27 @@ public class MainPage extends AppCompatActivity {
 
     // Moin Saadati's Comment : Methods For Scan Wifi
     // 2/10/17 4:26 PM
-    private void UIControl() {
+    private void UIControl(int flag) {
 
         iv_massage_wifi.setVisibility(View.VISIBLE);
         tv_massage_wifi.setVisibility(View.VISIBLE);
 
-        if (wifiManager.isWifiEnabled()) {
-            if (CurrentSSID != null) {
-                if (CurrentSSID.equals(Constants.AP_NAME_EXAMPLE)) {
-                    iv_massage_wifi.setImageResource(R.drawable.ic_check_circle);
-                    tv_massage_wifi.setTextColor(getResources().getColor(R.color.green_text));
-                    tv_massage_wifi.setText(R.string.wifi_massage_OK);
-                    tv_massage.setText(R.string.msg_time_for_apply_control);
-                } else {
-                    iv_massage_wifi.setImageResource(R.drawable.ic_remove_circle);
-                    tv_massage_wifi.setTextColor(getResources().getColor(R.color.orange_text));
-                    tv_massage_wifi.setText(R.string.wifi_massage_Connecting);
-                    tv_massage.setText(R.string.msg_near_to_connect);
-                }
-            }
-        } else {
+        if (flag == 0) {
             iv_massage_wifi.setImageResource(R.drawable.ic_cancel);
             tv_massage_wifi.setTextColor(getResources().getColor(R.color.red_text));
             tv_massage_wifi.setText(R.string.wifi_massage_ERROR);
+            tv_massage.setText(R.string.msg_near_to_connect);
+        }
+        if (flag == 1) {
+            iv_massage_wifi.setImageResource(R.drawable.ic_check_circle);
+            tv_massage_wifi.setTextColor(getResources().getColor(R.color.green_text));
+            tv_massage_wifi.setText(R.string.wifi_massage_OK);
+            tv_massage.setText(R.string.msg_time_for_apply_control);
+        }
+        if (flag == 2) {
+            iv_massage_wifi.setImageResource(R.drawable.ic_remove_circle);
+            tv_massage_wifi.setTextColor(getResources().getColor(R.color.orange_text));
+            tv_massage_wifi.setText(R.string.wifi_massage_Connecting);
             tv_massage.setText(R.string.msg_near_to_connect);
         }
 
@@ -158,8 +154,9 @@ public class MainPage extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Constants.Action_DeviceService)) {
-                CurrentSSID = intent.getStringExtra(Constants.KEY_CurrentSSID);
-                UIControl();
+                int flag = intent.getIntExtra(Constants.KEY_FLAG, 0);
+                Log.e("FLAG_RECIEVER:", String.valueOf(flag));
+                UIControl(flag);
                 Log.e("OnRecive:", "TRUE");
             }
         }
@@ -211,10 +208,10 @@ public class MainPage extends AppCompatActivity {
 
         adm_dialog = DInst_Auth.newInstance(10, 22f, false, false);
         adm_dialog.setCancelable(false);
+
         adm_dialog.show(getSupportFragmentManager(), "admin_dialog");
 
     }
-
 
     // Moin Saadati's Comment : Other Methods
     // 2/10/17 4:51 PM

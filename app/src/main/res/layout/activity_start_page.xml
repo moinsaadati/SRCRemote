@@ -59,10 +59,10 @@
 
             <Button
                 android:id="@+id/btn_scanBarcode"
+                style="@style/btn_hover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/btn_scan"
                 android:text="@string/sync"
                 android:textColor="@color/white"
                 android:visibility="invisible" />

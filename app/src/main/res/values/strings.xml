@@ -43,4 +43,5 @@
     <string name="reset_device_successfully">دستگاه ریست شد.</string>
     <string name="msg_for_show_did">برای کپی کردن متن دست خود را روی شماره سریال نگه دارید.</string>
     <string name="copy_text">کپی شد.</string>
+    <string name="not_find_devcie">درب اتوماتیک قابل شناسایی نیست.</string>
 </resources>

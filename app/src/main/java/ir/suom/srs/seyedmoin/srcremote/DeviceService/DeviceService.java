@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -45,16 +46,6 @@ public class DeviceService extends Service {
 
         local_pref = getSharedPreferences(Constants.Pref_Name, MODE_PRIVATE);
 
-        mWifiManager.disconnect();
-        List<WifiConfiguration> list = mWifiManager.getConfiguredNetworks();
-        for (WifiConfiguration i : list) {
-            if (i.SSID.equals("\"" + Constants.AP_NAME_EXAMPLE + "\"")) {
-                if (mWifiManager.removeNetwork(i.networkId))
-                    Log.e("Remove_WC", "True");
-            }
-            mWifiManager.saveConfiguration();
-        }
-
     }
 
     @Nullable
@@ -80,44 +71,80 @@ public class DeviceService extends Service {
             Intent intent = new Intent();
             intent.setAction(Constants.Action_DeviceService);
 
+            // Moin Saadati's Comment : Flag for Connecting Status
+            // Moin Saadati's Comment : flag = 1 -> Connected
+            // Moin Saadati's Comment : flag = 2 -> Connecting
+            // Moin Saadati's Comment : flag = 0 -> Connect is Fail
+            // 2/18/17 9:40 PM
+            int flag;
+
             if (mWifiManager.isWifiEnabled()) {
 
-                if (ConnectToDevice()) {
-                    intent.putExtra(Constants.KEY_CurrentSSID, Constants.AP_NAME_EXAMPLE);
+                WifiInfo wi = mWifiManager.getConnectionInfo();
+                if (wi.getNetworkId() != -1) {
+                    Log.e("SSID:", wi.getSSID());
+                    if (wi.getSSID().equals("\"" + Constants.AP_NAME_EXAMPLE + "\"")) {
+                        //tv_status.setText("Connect To * " + wi.getSSID());
+                        flag = 1;
+                    } else {
+                        mWifiManager.disconnect();
+                        //tv_status.setText("Connecting");
+                        flag = 2;
+                    }
+
                 } else {
-                    intent.putExtra(Constants.KEY_CurrentSSID, "");
+                    int netID = SearchInWC(Constants.AP_NAME_EXAMPLE);
+                    if (netID != -1) {
+                        if (mWifiManager.enableNetwork(netID, true)) {
+                            //tv_status.setText("Connect To ** NoBoDy"); means Connecting
+                            flag = 2;
+                        } else {
+                            //tv_status.setText("Not ** Connect");
+                            flag = 0;
+                        }
+
+                    } else {
+
+                        WifiConfiguration wc = new WifiConfiguration();
+                        //wc.hiddenSSID = true;
+                        wc.SSID = "\"" + Constants.AP_NAME_EXAMPLE + "\"";
+                        String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
+                        wc.preSharedKey = "\"" + pwd + "\"";
+                        wc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+                        int id = mWifiManager.addNetwork(wc);
+                        if (mWifiManager.enableNetwork(id, true)) {
+                            //tv_status.setText("Connecte to NoBoDy");
+                            flag = 1;
+                        } else {
+                            //tv_status.setText("Not Connect");
+                            flag = 2;
+                        }
+                    }
+
                 }
 
             } else {
-                mWifiManager.setWifiEnabled(true);
+                //tv_status.setText("wifi is off.");
+                flag = 0;
             }
 
+            Log.e("FLAG_SERVICE:", String.valueOf(flag));
+            intent.putExtra(Constants.KEY_FLAG, flag);
             sendBroadcast(intent);
 
         }
     }
 
-    // Moin Saadati's Comment : Methods For Connect To Device
-    // 2/14/17 4:04 PM
-    private boolean ConnectToDevice() {
+    private int SearchInWC(String ssid) {
 
-        WifiConfiguration wc = new WifiConfiguration();
-
-        //wc.hiddenSSID = true;
-        wc.SSID = "\"" + Constants.AP_NAME_EXAMPLE + "\"";
-        wc.preSharedKey = "\"" + local_pref.getString(Constants.KEY_Device_ID, "") + "\"";
-        wc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-
-        int id = mWifiManager.addNetwork(wc);
-
-        //wifiManager.disconnect();
-        if (mWifiManager.enableNetwork(id, true)) {
-            Log.e("Connect To Device:", "True");
-            return true;
-        } else {
-            Log.e("Connect To Device:", "False");
-            return false;
+        List<WifiConfiguration> list_wc = mWifiManager.getConfiguredNetworks();
+        for (WifiConfiguration wc : list_wc) {
+            if (wc.SSID.equals("\"" + ssid + "\"")) {
+                return wc.networkId;
+            }
         }
+        return -1;
     }
+
 
 }
