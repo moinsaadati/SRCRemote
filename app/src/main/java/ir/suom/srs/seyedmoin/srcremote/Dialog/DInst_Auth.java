@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -45,7 +46,6 @@ public class DInst_Auth extends SupportBlurDialogFragment {
         args.putFloat(BUNDLE_KEY_DOWN_SCALE_FACTOR, downScaleFactor);
         args.putBoolean(BUNDLE_KEY_DIMMING, dimming);
         args.putBoolean(BUNDLE_KEY_DEBUG, debug);
-
         fragment.setArguments(args);
 
         return fragment;
@@ -67,6 +67,13 @@ public class DInst_Auth extends SupportBlurDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getDialog().setCancelable(true);
+            }
+        }, 2000);
+
     }
 
     @Override
@@ -78,6 +85,7 @@ public class DInst_Auth extends SupportBlurDialogFragment {
 
         return rootView;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -108,7 +116,6 @@ public class DInst_Auth extends SupportBlurDialogFragment {
                     Intent installer_act = new Intent(getActivity(), Inst_Act.class);
                     startActivity(installer_act);
                     getDialog().dismiss();
-
                 }
             }
 
@@ -125,7 +132,7 @@ public class DInst_Auth extends SupportBlurDialogFragment {
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
         getDialog().getWindow()
-                .getAttributes().windowAnimations = R.style.animation_up_down;
+                .getAttributes().windowAnimations = R.style.animation_fade_in_out;
     }
 
 

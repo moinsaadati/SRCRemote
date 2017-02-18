@@ -1,1 +1,1 @@
-include ':app', ':barcodescanner', ':bodymovin', ':gifShow'
+include ':app', ':barcodescanner', ':gifShow'

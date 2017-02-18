@@ -3,6 +3,7 @@ package ir.suom.srs.seyedmoin.srcremote.DeviceService;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -31,6 +32,9 @@ public class DeviceService extends Service {
     private long initial_Delay = 500;
     private long period_Reader = 1000;
 
+    // SharedPreference
+    SharedPreferences local_pref;
+
     @Override
     public void onCreate() {
         mWifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
@@ -39,12 +43,14 @@ public class DeviceService extends Service {
         scheduleReaderHandle = mScheduler.scheduleAtFixedRate(new ScheduleReader(), initial_Delay, period_Reader,
                 TimeUnit.MILLISECONDS);
 
+        local_pref = getSharedPreferences(Constants.Pref_Name, MODE_PRIVATE);
 
+        mWifiManager.disconnect();
         List<WifiConfiguration> list = mWifiManager.getConfiguredNetworks();
         for (WifiConfiguration i : list) {
             if (i.SSID.equals("\"" + Constants.AP_NAME_EXAMPLE + "\"")) {
-                Log.e("Remove_WC", "True");
-                mWifiManager.removeNetwork(i.networkId);
+                if (mWifiManager.removeNetwork(i.networkId))
+                    Log.e("Remove_WC", "True");
             }
             mWifiManager.saveConfiguration();
         }
@@ -63,7 +69,6 @@ public class DeviceService extends Service {
         scheduleReaderHandle.cancel(true);
         mScheduler.shutdown();
         super.onDestroy();
-
     }
 
     class ScheduleReader implements Runnable {
@@ -100,7 +105,7 @@ public class DeviceService extends Service {
 
         //wc.hiddenSSID = true;
         wc.SSID = "\"" + Constants.AP_NAME_EXAMPLE + "\"";
-        wc.preSharedKey = "\"" + Constants.PWD + "\"";
+        wc.preSharedKey = "\"" + local_pref.getString(Constants.KEY_Device_ID, "") + "\"";
         wc.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
 
         int id = mWifiManager.addNetwork(wc);
@@ -114,4 +119,5 @@ public class DeviceService extends Service {
             return false;
         }
     }
+
 }

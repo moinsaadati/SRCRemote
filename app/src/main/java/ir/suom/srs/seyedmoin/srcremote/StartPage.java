@@ -1,13 +1,18 @@
 package ir.suom.srs.seyedmoin.srcremote;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
@@ -52,6 +57,21 @@ public class StartPage extends AppCompatActivity {
     GifDrawable gifDrawable;
     GifImageView start_gif;
 
+    // Moin Saadati's Comment : Organize Start Activity : StartPage Or MainPage
+    // Moin Saadati's Comment : request Perission
+    // 2/10/17 3:09 PM
+    private static final int REQUEST_GLOBAL_PERMINSSIONS_CODE = 1;
+    private static String[] global_permissions = new String[]{
+            Manifest.permission.CHANGE_WIFI_STATE,
+            Manifest.permission.ACCESS_WIFI_STATE,
+            Manifest.permission.INTERNET,
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+
+    // SharedPreference
+    SharedPreferences local_pref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,29 +80,36 @@ public class StartPage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mWifiData = null;
 
-        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-
-        // Set Receiver
-        WifiReceiver mReceiver = new WifiReceiver();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter(Constants.APP_NAME));
-
-        // Launch WiFi service
-        wifi_service = new Intent(this, WifiService.class);
-        startService(wifi_service);
-
-        // Recover Retained object
-        mWifiData = (WifiData) getLastNonConfigurationInstance();
+        local_pref = getSharedPreferences(Constants.Pref_Name, MODE_PRIVATE);
 
         setContentView(R.layout.activity_start_page);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(global_permissions, REQUEST_GLOBAL_PERMINSSIONS_CODE);
+        } else {
+
+            String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
+            if (pwd.isEmpty()) {
+                FunctionStartPage();
+            } else {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent nextAct;
+                        nextAct = new Intent(StartPage.this, MainPage.class);
+                        nextAct.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(nextAct);
+                        finish(); // finish activity
+                    }
+                }, 1700);
+            }
+        }
+
 
         Initialization();
 
         start_gif.setImageDrawable(gifDrawable);
-
-
-        //logNetworks();
 
         btn_Scan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +130,26 @@ public class StartPage extends AppCompatActivity {
                 finish();
             }
         }
+
+    }
+
+    private void FunctionStartPage() {
+
+        Log.e("StartPage:", "TRUE");
+
+        mWifiData = null;
+        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+
+        // Set Receiver
+        WifiReceiver mReceiver = new WifiReceiver();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter(Constants.APP_NAME));
+
+        // Launch WiFi service
+        wifi_service = new Intent(this, WifiService.class);
+        startService(wifi_service);
+
+        // Recover Retained object
+        mWifiData = (WifiData) getLastNonConfigurationInstance();
 
     }
 
@@ -197,26 +244,38 @@ public class StartPage extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode != MaterialBarcodeScanner.RC_HANDLE_CAMERA_PERM) {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            return;
-        }
-        if (grantResults.length != 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            StartScan();
-            return;
-        }
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
+
+        switch (requestCode) {
+            case REQUEST_GLOBAL_PERMINSSIONS_CODE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // The requested permission is granted.
+                    Log.d("onRequestPermissionsResult:", "Grant");
+
+                    String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
+                    if (pwd.isEmpty()) {
+                        FunctionStartPage();
+                    } else {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent nextAct;
+                                nextAct = new Intent(StartPage.this, MainPage.class);
+                                nextAct.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(nextAct);
+                                finish(); // finish activity
+                            }
+                        }, 1700);
+                    }
+                } else {
+                    finish();
+                }
             }
-        };
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Error")
-                .setMessage(R.string.no_camera_permission)
-                .setPositiveButton(android.R.string.ok, listener)
-                .show();
+        }
+
     }
 
 
@@ -224,13 +283,14 @@ public class StartPage extends AppCompatActivity {
     // 2/10/17 4:51 PM
     @Override
     public void onPause() {
-        stopService(wifi_service);
+        //stopService(wifi_service);
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        stopService(wifi_service);
+        //stopService(wifi_service);
         super.onDestroy();
     }
+
 }

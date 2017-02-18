@@ -27,13 +27,13 @@
 
         <Button
             android:id="@+id/btn_control"
+            style="@style/btn_hover"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="85dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/btn_scan"
             android:text="@string/open_door"
             android:textColor="@color/grey200"
-            android:textSize="25dp" />
+            android:textSize="29dp" />
 
     </LinearLayout>
 

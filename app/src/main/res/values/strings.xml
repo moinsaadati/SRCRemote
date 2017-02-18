@@ -3,7 +3,7 @@
     <string name="Scan">Scan</string>
     <string name="Turn_On_Location">موقعیت خود را روشن کنید.</string>
     <string name="config">Config</string>
-    <string name="sync">همگام سازی</string>
+    <string name="sync">همگام‌سازی</string>
 
     <string name="font_iransanz">fonts/IRANSansMobile.ttf</string>
     <string name="font_iransanz_bold">fonts/IRANSansMobile_Bold.ttf</string>
@@ -18,28 +18,29 @@
     <string name="show_device_pw">نمایش رمز دستگاه</string>
     <string name="reset_device">تنظیم مجدد دستگاه</string>
     <string name="show_remote">نمایش ریموت</string>
-    <string name="wifi_off">وای فای خاموش است.</string>
+    <string name="wifi_off">شبکه خاموش است.</string>
     <string name="smart_control_parking_door">کنترل هوشمند درب پارکینگ</string>
     <string name="sadjad_research_center">مرکز تحقیقات سجاد</string>
-    <string name="wifi_massage_OK">ارتباط با سیستم برقرار می باشد.</string>
-    <string name="wifi_massage_ERROR">ارتباط با سیستم امکان پذیر نیست.</string>
+    <string name="wifi_massage_OK">ارتباط با سیستم برقرار می‌باشد.</string>
+    <string name="wifi_massage_ERROR">ارتباط با سیستم امکان‌پذیر نیست.</string>
     <string name="wifi_massage_Connecting">در حال ارتباط با سیستم...</string>
-    <string name="msg_near_to_connect">* لطفا برای اتصال به درب پارکینگ به آن نزدیک شوید.</string>
-    <string name="msg_time_for_apply_control">* به طور معمول بازکردن یا بستن درب در حدود ۱۰ ثانیه به طول می انجامد.</string>
+    <string name="msg_near_to_connect">*لطفا برای اتصال به درب پارکینگ به آن نزدیک شوید.</string>
+    <string name="msg_time_for_apply_control">*به طور معمول بازکردن یا بستن درب در حدود ۱۰ ثانیه به طول می‌انجامد.</string>
     <string name="door_status">وضعیت درب</string>
-    <string name="door_status_closed">درب پارکینگ هم اکنون بسته می باشد...</string>
+    <string name="door_status_closed">درب پارکینگ هم اکنون بسته می‌باشد...</string>
     <string name="door_status_getting">در حال گرفتن وضعیت در...</string>
     <string name="door_status_unknow">وضعیت درب نامعلوم است...</string>
     <string name="open_door">باز کردن درب</string>
     <string name="massage">پیام</string>
-    <string name="please_enter_sec_code">لطفا کد امینیتی را وارد نمایید:</string>
+    <string name="please_enter_sec_code">لطفا کد امنیتی را وارد نمایید:</string>
     <string name="reset_factory">بازگشت به تنظیمات کارخانه</string>
     <string name="set_remote">تنظیمات ریموت</string>
     <string name="main_setting_device">تنظیمات اصلی دستگاه</string>
-    <string name="msg_for_reset_device">برای ریست دستگاه کلمه ی Reset را در کادر زیر بنویسید و دکمه ریست را بفشارید.</string>
+    <string name="msg_for_reset_device">برای ریست دستگاه کلمه‌ی Reset را در کادر زیر بنویسید و دکمه ریست را بفشارید.</string>
     <string name="title_reset_factory">ریست دستگاه</string>
     <string name="reset">ریست</string>
     <string name="reset_en">Reset</string>
     <string name="reset_device_successfully">دستگاه ریست شد.</string>
     <string name="msg_for_show_did">برای کپی کردن متن دست خود را روی شماره سریال نگه دارید.</string>
+    <string name="copy_text">کپی شد.</string>
 </resources>

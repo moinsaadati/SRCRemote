@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/SRCRemote.iml" filepath="$PROJECT_DIR$/SRCRemote.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/barcodescanner/barcodescanner.iml" filepath="$PROJECT_DIR$/barcodescanner/barcodescanner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bodymovin/bodymovin.iml" filepath="$PROJECT_DIR$/bodymovin/bodymovin.iml" />
       <module fileurl="file://$PROJECT_DIR$/gifShow/gifShow.iml" filepath="$PROJECT_DIR$/gifShow/gifShow.iml" />
     </modules>
   </component>

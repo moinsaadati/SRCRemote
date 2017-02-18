@@ -67,7 +67,7 @@ public class Dialog_DID extends DialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 String et = et_device_id.getText().toString();
-                if (et.endsWith("00")) {
+                if (et.endsWith("@")) {
                     Intent main_act = new Intent("ir.suom.srs.seyedmoin.srcremote.MainPage");
                     main_act.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     main_act.putExtra("response", et.substring(0, et.length() - 2));

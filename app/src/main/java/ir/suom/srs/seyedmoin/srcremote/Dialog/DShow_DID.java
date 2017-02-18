@@ -2,6 +2,10 @@ package ir.suom.srs.seyedmoin.srcremote.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment;
+import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
 import ir.suom.srs.seyedmoin.srcremote.R;
+
+import static android.content.Context.CLIPBOARD_SERVICE;
 
 /**
  * Created by seyedmoin on 2/17/17.
@@ -30,6 +37,7 @@ public class DShow_DID extends SupportBlurDialogFragment {
 
     TextView tv_title_show_did, tv_show_did, tv_device_id;
 
+    // BlurDialog
     private static final String BUNDLE_KEY_DOWN_SCALE_FACTOR = "bundle_key_down_scale_factor";
     private static final String BUNDLE_KEY_BLUR_RADIUS = "bundle_key_blur_radius";
     private static final String BUNDLE_KEY_DIMMING = "bundle_key_dimming_effect";
@@ -38,6 +46,9 @@ public class DShow_DID extends SupportBlurDialogFragment {
     private float mDownScaleFactor;
     private boolean mDimming;
     private boolean mDebug;
+
+    // SharedPreference
+    SharedPreferences local_pref;
 
     public static DShow_DID newInstance(int radius, float downScaleFactor, boolean dimming, boolean debug) {
         DShow_DID fragment = new DShow_DID();
@@ -68,6 +79,8 @@ public class DShow_DID extends SupportBlurDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        local_pref = getActivity().getSharedPreferences(Constants.Pref_Name, Context.MODE_PRIVATE);
+
     }
 
 
@@ -97,8 +110,18 @@ public class DShow_DID extends SupportBlurDialogFragment {
         tv_title_show_did.setTypeface(tp);
         tv_show_did.setTypeface(tp);
 
-        tv_device_id.setText("6SD78SDGV4zxi");
+        tv_device_id.setText(local_pref.getString(Constants.KEY_Device_ID, ""));
 
+        tv_device_id.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Device ID", tv_device_id.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getActivity().getBaseContext(), R.string.copy_text, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
     }
 
@@ -107,7 +130,7 @@ public class DShow_DID extends SupportBlurDialogFragment {
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
         getDialog().getWindow()
-                .getAttributes().windowAnimations = R.style.animation_up_down;
+                .getAttributes().windowAnimations = R.style.animation_fade_in_out;
     }
 
 

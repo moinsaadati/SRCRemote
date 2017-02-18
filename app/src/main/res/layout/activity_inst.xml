@@ -28,20 +28,20 @@
 
         <Button
             android:id="@+id/btn_option_1"
+            style="@style/btn_hover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/btn_scan"
             android:text="@string/reset_device"
             android:textColor="@color/white"
             android:textSize="17sp" />
 
         <Button
             android:id="@+id/btn_option_2"
+            style="@style/btn_hover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/btn_scan"
             android:text="@string/reset_factory"
             android:textColor="@color/white"
             android:textSize="17sp"
@@ -49,10 +49,10 @@
 
         <Button
             android:id="@+id/btn_option_3"
+            style="@style/btn_hover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/btn_scan"
             android:text="@string/show_device_pw"
             android:textColor="@color/white"
             android:textSize="17sp"
@@ -60,10 +60,10 @@
 
         <Button
             android:id="@+id/btn_option_4"
+            style="@style/btn_hover"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/btn_scan"
             android:text="@string/set_remote"
             android:textColor="@color/white"
             android:textSize="17sp"

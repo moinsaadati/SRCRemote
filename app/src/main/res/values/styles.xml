@@ -20,5 +20,21 @@
         <item name="android:windowExitAnimation">@anim/slide_bottom</item>
     </style>
 
+    <style name="animation_fade_in_out">
+        <item name="android:duration">500</item>
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="animation_fade_out_in">
+        <item name="android:duration">500</item>
+        <item name="android:windowEnterAnimation">@anim/fade_out</item>
+        <item name="android:windowExitAnimation">@anim/fade_in</item>
+    </style>
+
+    <style name="btn_hover">
+        <item name="android:duration">500</item>
+        <item name="android:background">@drawable/selector_btn</item>
+    </style>
 
 </resources>

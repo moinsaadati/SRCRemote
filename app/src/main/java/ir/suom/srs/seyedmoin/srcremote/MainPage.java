@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
@@ -13,6 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,9 +35,7 @@ public class MainPage extends AppCompatActivity {
     // 2/10/17 7:25 PM
     Button btn_Control;
     TextView tv_Door_Device_status, tv_control_smart, tv_sadjad_research_center, tv_massage_wifi, tv_massage;
-
     ImageView iv_massage_wifi, iv_icon;
-
 
     // For Device Service
     WifiManager wifiManager;
@@ -44,6 +44,13 @@ public class MainPage extends AppCompatActivity {
     IntentFilter intentFilter;
     String CurrentSSID;
 
+    // SharedPreference
+    SharedPreferences local_pref;
+    SharedPreferences.Editor local_pref_edit;
+
+    // Dialog
+    DInst_Auth adm_dialog;
+    boolean dialog = false;
     int timetap = 0;
 
     @Override
@@ -60,6 +67,18 @@ public class MainPage extends AppCompatActivity {
         // Launch WiFi service
         device_service = new Intent(this, DeviceService.class);
         startService(device_service);
+
+        // SharedPreference Initialization
+        local_pref = getSharedPreferences(Constants.Pref_Name, MODE_PRIVATE);
+        local_pref_edit = local_pref.edit();
+
+
+        if (getIntent().getExtras() != null) {
+            Log.e("Device ID:", getIntent().getStringExtra("response"));
+            local_pref_edit.putString(Constants.KEY_Device_ID, getIntent().getStringExtra("response"));
+            local_pref_edit.commit();
+            Toast.makeText(getBaseContext(), local_pref.getString(Constants.KEY_Device_ID, ""), Toast.LENGTH_LONG).show();
+        }
 
         setContentView(R.layout.activity_main_page);
 
@@ -177,12 +196,11 @@ public class MainPage extends AppCompatActivity {
                     timetap = 0;
                 }
             };
-            if (timetap <= 19) {
+            if (timetap == 1) {
                 //Single click
-                Toast.makeText(getBaseContext(), String.valueOf(20 - timetap), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), String.valueOf(20 - timetap), Toast.LENGTH_SHORT).show();
                 handler.postDelayed(r, 10000);
-            } else if (timetap == 20) {
-                timetap = 0;
+            } else if (timetap >= 20) {
                 ShowDailog();
             }
         }
@@ -191,10 +209,12 @@ public class MainPage extends AppCompatActivity {
 
     private void ShowDailog() {
 
-        DInst_Auth adm_dialog = DInst_Auth.newInstance(8, 4f, false, false);
+        adm_dialog = DInst_Auth.newInstance(10, 22f, false, false);
+        adm_dialog.setCancelable(false);
         adm_dialog.show(getSupportFragmentManager(), "admin_dialog");
 
     }
+
 
     // Moin Saadati's Comment : Other Methods
     // 2/10/17 4:51 PM

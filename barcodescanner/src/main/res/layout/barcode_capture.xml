@@ -33,6 +33,7 @@
             android:layout_gravity="center_horizontal|bottom"
             android:text="@string/barcode_camera"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </RelativeLayout>
 
     <ImageView

@@ -94,6 +94,7 @@ public class DReset_Device extends SupportBlurDialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Typeface tp = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.font_iransanz));
+        Typeface tp_bold = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.font_iransanz_bold));
 
         tv_for_reset_device = (TextView) view.findViewById(R.id.tv_for_reset_device);
         tv_title_reset_device = (TextView) view.findViewById(R.id.tv_title_reset_device);
@@ -101,7 +102,7 @@ public class DReset_Device extends SupportBlurDialogFragment {
         btn_reset_factory = (Button) view.findViewById(R.id.btn_reset_factory);
 
         tv_for_reset_device.setTypeface(tp);
-        tv_title_reset_device.setTypeface(tp);
+        tv_title_reset_device.setTypeface(tp_bold);
         btn_reset_factory.setTypeface(tp);
 
 
@@ -120,7 +121,7 @@ public class DReset_Device extends SupportBlurDialogFragment {
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
         getDialog().getWindow()
-                .getAttributes().windowAnimations = R.style.animation_up_down;
+                .getAttributes().windowAnimations = R.style.animation_fade_in_out;
     }
 
 

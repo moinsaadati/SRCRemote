@@ -1,5 +1,6 @@
 package ir.suom.srs.seyedmoin.srcremote.Inst_Panel;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
 import ir.suom.srs.seyedmoin.srcremote.Dialog.DReset_Device;
 import ir.suom.srs.seyedmoin.srcremote.Dialog.DShow_DID;
 import ir.suom.srs.seyedmoin.srcremote.R;
@@ -19,10 +21,13 @@ public class Inst_Act extends AppCompatActivity {
     // Moin Saadati's Comment : Installer Panel
     // 2/14/17 5:18 PM
     Button btn_option1, btn_option2, btn_option3, btn_option4;
-    WifiManager wifiManager;
-
     TextView tv_control_smart, tv_sadjad_research_center, tv_massage_wifi, tv_main_setting_device;
     ImageView iv_massage_wifi, iv_icon;
+
+    WifiManager wifiManager;
+
+    // SharedPreference
+    SharedPreferences local_pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +72,14 @@ public class Inst_Act extends AppCompatActivity {
 
     private void ResetFactory() {
 
-        DReset_Device dReset_device = DReset_Device.newInstance(8, 4f, false, false);
+        DReset_Device dReset_device = DReset_Device.newInstance(10, 22f, false, false);
         dReset_device.show(getSupportFragmentManager(), "DReset_Device");
 
     }
 
     private void ShowDeviceID() {
 
-        DShow_DID dShow_did = DShow_DID.newInstance(8, 4f, false, false);
+        DShow_DID dShow_did = DShow_DID.newInstance(10, 22f, false, false);
         dShow_did.show(getSupportFragmentManager(), "DShow_DID");
 
     }
