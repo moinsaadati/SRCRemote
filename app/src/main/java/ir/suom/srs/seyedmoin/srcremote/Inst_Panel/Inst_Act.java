@@ -48,7 +48,7 @@ public class Inst_Act extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Dialog for Reset Factory Device
-                Toast.makeText(getBaseContext(), "Reset Device", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getBaseContext(), "Reset Device", Toast.LENGTH_SHORT).show();
                 ResetFactory();
             }
         });

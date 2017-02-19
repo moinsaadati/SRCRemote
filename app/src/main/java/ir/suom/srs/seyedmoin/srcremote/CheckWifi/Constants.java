@@ -25,4 +25,7 @@ public class Constants {
     public static final String KEY_Device_Name = "key_device_name";
     public static final String KEY_IP_Address = "key_ip_address";
     public static final String KEY_Port = "key_port";
+
+    public static String PIN_INST = "1021";
+
 }

@@ -110,6 +110,8 @@ public class DReset_Device extends SupportBlurDialogFragment {
                 // Reset Factory Device
                 if (et_reset.getText().toString().equals("Reset") || et_reset.getText().toString().equals("reset"))
                     Toast.makeText(getActivity().getBaseContext(), R.string.reset_device_successfully, Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getActivity().getBaseContext(), R.string.enter_reset, Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment;
+import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
 import ir.suom.srs.seyedmoin.srcremote.Inst_Panel.Inst_Act;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
@@ -112,7 +113,7 @@ public class DInst_Auth extends SupportBlurDialogFragment {
                 // nothing
                 String pwd = et_pwd.getText().toString();
                 // Go To Installer Panel
-                if (pwd.equals("1234")) {
+                if (pwd.equals(Constants.PIN_INST)) {
                     Intent installer_act = new Intent(getActivity(), Inst_Act.class);
                     startActivity(installer_act);
                     getDialog().dismiss();

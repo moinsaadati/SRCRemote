@@ -93,7 +93,12 @@ public class StartPage extends AppCompatActivity {
         } else {
             String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
             if (pwd.isEmpty()) {
-                FunctionStartPage();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        FunctionStartPage();
+                    }
+                }, 2000);
             } else {
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -104,7 +109,7 @@ public class StartPage extends AppCompatActivity {
                         startActivity(nextAct);
                         finish(); // finish activity
                     }
-                }, 1700);
+                }, 1900);
             }
         }
 
@@ -275,7 +280,12 @@ public class StartPage extends AppCompatActivity {
 
                     String pwd = local_pref.getString(Constants.KEY_Device_ID, "");
                     if (pwd.isEmpty()) {
-                        FunctionStartPage();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FunctionStartPage();
+                            }
+                        }, 2000);
                     } else {
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -286,7 +296,7 @@ public class StartPage extends AppCompatActivity {
                                 startActivity(nextAct);
                                 finish(); // finish activity
                             }
-                        }, 1700);
+                        }, 1900);
                     }
                 } else {
                     finish();

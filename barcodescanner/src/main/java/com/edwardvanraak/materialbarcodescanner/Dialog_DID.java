@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Dialog_DID extends DialogFragment {
@@ -57,34 +59,22 @@ public class Dialog_DID extends DialogFragment {
         tv_help_edi.setTypeface(tp);
         tv_enter_device_id.setTypeface(tp);
 
-        et_device_id.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                String et = et_device_id.getText().toString();
-                if (et.endsWith("@")) {
+        et_device_id.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String et = et_device_id.getText().toString();
                     Intent main_act = new Intent("ir.suom.srs.seyedmoin.srcremote.MainPage");
                     main_act.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    main_act.putExtra("response", et.substring(0, et.length() - 1));
+                    main_act.putExtra("response", et);
                     startActivity(main_act);
                     getActivity().finish();
+                    return true;
                 }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                return false;
             }
         });
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
 
     }
 

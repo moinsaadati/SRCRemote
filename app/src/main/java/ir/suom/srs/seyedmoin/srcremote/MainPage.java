@@ -191,6 +191,7 @@ public class MainPage extends AppCompatActivity {
                 @Override
                 public void run() {
                     timetap = 0;
+                    iv_icon.setClickable(true);
                 }
             };
             if (timetap == 1) {
@@ -198,6 +199,7 @@ public class MainPage extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), String.valueOf(20 - timetap), Toast.LENGTH_SHORT).show();
                 handler.postDelayed(r, 10000);
             } else if (timetap >= 20) {
+                iv_icon.setClickable(false);
                 ShowDailog();
             }
         }
@@ -208,7 +210,6 @@ public class MainPage extends AppCompatActivity {
 
         adm_dialog = DInst_Auth.newInstance(10, 22f, false, false);
         adm_dialog.setCancelable(false);
-
         adm_dialog.show(getSupportFragmentManager(), "admin_dialog");
 
     }
