@@ -23,15 +23,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import ir.suom.srs.seyedmoin.srcremote.DeviceService.DeviceService;
 import ir.suom.srs.seyedmoin.srcremote.Dialog.DInst_Auth;
 import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
+import ir.suom.srs.seyedmoin.srcremote.Socket.Client;
+import ir.suom.srs.seyedmoin.srcremote.Socket.SocketResult;
 
 
 public class MainPage extends AppCompatActivity {
 
     // Moin Saadati's Comment : Connect To Device And Get Device's Status
-    // Moin Saadati's Comment : then Control Remote
+    // Moin Saadati's Comment : then Control Adapter_Remote
     // 2/10/17 7:25 PM
     Button btn_Control;
     TextView tv_Door_Device_status, tv_control_smart, tv_sadjad_research_center, tv_massage_wifi, tv_massage;
@@ -51,6 +57,10 @@ public class MainPage extends AppCompatActivity {
     DInst_Auth adm_dialog;
     boolean dialog = false;
     int timetap = 0;
+
+    // Status and device
+
+    private final static int INTERVAL = 4000; // 2 seconde
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,16 +92,8 @@ public class MainPage extends AppCompatActivity {
 
         Initialization();
 
-        tv_Door_Device_status.setText(R.string.door_status_closed);
-
-        btn_Control.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // onClick btn_control
-            }
-        });
-
     }
+
 
     private void Initialization() {
 
@@ -116,14 +118,37 @@ public class MainPage extends AppCompatActivity {
         tv_Door_Device_status.setTypeface(tp);
         tv_massage.setTypeface(tp);
         btn_Control.setTypeface(tp_bold);
-
+        DeActiveButtonControl();
         wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
     }
 
+    private void DeActiveButtonControl() {
+
+        btn_Control.setClickable(false);
+        btn_Control.setBackgroundResource(R.drawable.selector_btn_unclickable);
+        btn_Control.setTextColor(getResources().getColor(R.color.grey_text));
+
+    }
+
+    private void ActiveButtonControl() {
+
+        btn_Control.setClickable(true);
+        btn_Control.setBackgroundResource(R.drawable.selector_btn_clickable);
+        btn_Control.setTextColor(getResources().getColor(R.color.grey200));
+
+    }
+
+    public void OnClickBtnControl(View v) {
+        DefineSocketSend(Constants.POST_DOOR);
+    }
+
+
     // Moin Saadati's Comment : Methods For Scan Wifi
     // 2/10/17 4:26 PM
     private void UIControl(int flag) {
+
+        final Handler handler = new Handler();
 
         iv_massage_wifi.setVisibility(View.VISIBLE);
         tv_massage_wifi.setVisibility(View.VISIBLE);
@@ -133,24 +158,72 @@ public class MainPage extends AppCompatActivity {
             tv_massage_wifi.setTextColor(getResources().getColor(R.color.red_text));
             tv_massage_wifi.setText(R.string.wifi_massage_ERROR);
             tv_massage.setText(R.string.msg_near_to_connect);
+            DeActiveButtonControl();
         }
         if (flag == 1) {
             iv_massage_wifi.setImageResource(R.drawable.ic_check_circle);
             tv_massage_wifi.setTextColor(getResources().getColor(R.color.green_text));
             tv_massage_wifi.setText(R.string.wifi_massage_OK);
             tv_massage.setText(R.string.msg_time_for_apply_control);
+            tv_Door_Device_status.setText(R.string.door_status_getting);
+            ActiveButtonControl();
+
+
+            // Get Door Status
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    //DefineSocketSend(Constants.GET_DOOR_STATUS);
+                    Toast.makeText(getBaseContext(), "Toast", Toast.LENGTH_SHORT).show();
+                    handler.postDelayed(this, INTERVAL); //now is every
+                }
+            }, INTERVAL); //Every
+
+
         }
         if (flag == 2) {
+
             iv_massage_wifi.setImageResource(R.drawable.ic_remove_circle);
             tv_massage_wifi.setTextColor(getResources().getColor(R.color.orange_text));
             tv_massage_wifi.setText(R.string.wifi_massage_Connecting);
             tv_massage.setText(R.string.msg_near_to_connect);
+            DeActiveButtonControl();
+
+        }
+
+    }
+
+    private void Door_Status(String result) {
+
+        String status = "";
+
+        /*if (result != null)
+            status = result.substring(12);*/
+
+        if (status.equals(Constants.STATUS_CLOSED)) {
+            tv_Door_Device_status.setText(R.string.door_status_closed);
+            btn_Control.setText(R.string.open_door);
+        } else if (status.equals(Constants.STATUS_CLOSING)) {
+            tv_Door_Device_status.setText(R.string.door_status_closing);
+            btn_Control.setText(R.string.stop_door);
+        } else if (status.equals(Constants.STATUS_OPENED)) {
+            tv_Door_Device_status.setText(R.string.door_status_opened);
+            btn_Control.setText(R.string.close_door);
+        } else if (status.equals(Constants.STATUS_OPENNING)) {
+            tv_Door_Device_status.setText(R.string.door_status_opening);
+            btn_Control.setText(R.string.stop_door);
+        } else if (status.equals(Constants.STATUS_STOPPED_CLOSE)) {
+            tv_Door_Device_status.setText(R.string.door_status_stoped);
+            btn_Control.setText(R.string.close_door);
+        } else if (status.equals(Constants.STATUS_STOPPED_OPEN)) {
+            tv_Door_Device_status.setText(R.string.door_status_stoped);
+            btn_Control.setText(R.string.open_door);
+        } else {
+            tv_Door_Device_status.setText(R.string.door_status_unknow);
         }
 
     }
 
     public class DeviceReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Constants.Action_DeviceService)) {
@@ -238,4 +311,24 @@ public class MainPage extends AppCompatActivity {
         registerReceiver(dReceiver, intentFilter);
         super.onResume();
     }
+
+    // Moin Saadati's Comment : Methods For Connect To Device and Send Massage
+    // 2/24/17 7:28 PM
+    private void DefineSocketSend(final String msg) {
+
+        Client myClient = new Client(Constants.IP_Address
+                , Integer.parseInt(Constants.PORT)
+                , new SocketResult() {
+            @Override
+            public void onResponse(String result) {
+
+                Log.e("Response:", result);
+                Door_Status(result);
+
+            }
+        });
+        myClient.execute(msg);
+
+    }
+
 }

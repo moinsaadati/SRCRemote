@@ -10,13 +10,14 @@ public class Constants {
     // Device Service
     public static String Action_DeviceService = "device_service";
     public static final String KEY_FLAG = "flag_connect";
+    public static final String KEY_RESULT = "result_socket";
     public static final String AP_NAME = "parking";
     public static final String AP_NAME_EXAMPLE = "test_src";
     public static final String AP_NAME_EXAMPLE1 = "test";
     public static final String AP_NAME_EXAMPLE2 = "seyedmoin";
 
     // Socket Properties
-    public static final String IP_Address = "192.168.1.4";
+    public static final String IP_Address = "10.42.0.98";
     public static final String PORT = "8080";
 
     // Preference Properties
@@ -26,6 +27,17 @@ public class Constants {
     public static final String KEY_IP_Address = "key_ip_address";
     public static final String KEY_Port = "key_port";
 
-    public static String PIN_INST = "1021";
+    public static String PIN_INST = "10211021";
 
+    // REQUEST FOR USER
+    public static String GET_DOOR_STATUS = "$door-status$";
+    public static String POST_DOOR = "$door$";
+    public static String STATUS_OPENED = "opened$";
+    public static String STATUS_CLOSED = "closed$";
+    public static String STATUS_OPENNING = "openning$";
+    public static String STATUS_CLOSING = "closing$";
+    public static String STATUS_STOPPED_OPEN = "stopped_open$";
+    public static String STATUS_STOPPED_CLOSE = "stopped_clos$";
+
+    // REQEST FOR INSTALLER
 }

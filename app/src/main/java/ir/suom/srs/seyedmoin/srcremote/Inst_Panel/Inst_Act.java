@@ -1,5 +1,6 @@
 package ir.suom.srs.seyedmoin.srcremote.Inst_Panel;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
@@ -40,7 +41,9 @@ public class Inst_Act extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Activity for Set Device
-                Toast.makeText(getBaseContext(), "Set Device", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), "Set Device", Toast.LENGTH_SHORT).show();
+                Intent inst_setting = new Intent(Inst_Act.this, Inst_Setting.class);
+                startActivity(inst_setting);
             }
         });
 
@@ -65,7 +68,10 @@ public class Inst_Act extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Activity For Remotes
-                Toast.makeText(getBaseContext(), "Show Remotes", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), "Show Remotes", Toast.LENGTH_SHORT).show();
+                Intent inst_remotes = new Intent(Inst_Act.this, Inst_Remotes.class);
+                startActivity(inst_remotes);
+
             }
         });
     }

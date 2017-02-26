@@ -14,7 +14,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".StartPage">
+        <activity
+            android:name=".StartPage"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="ir.suom.srs.seyedmoin.srcremote.StartPage" />
                 <action android:name="android.intent.action.MAIN" />
@@ -42,8 +44,25 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Inst_Panel.Inst_Setting">
+            <intent-filter>
+                <action android:name="ir.suom.srs.seyedmoin.srcremote.Inst_Settings" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Inst_Panel.Inst_Remotes">
+            <intent-filter>
+                <action android:name="ir.suom.srs.seyedmoin.srcremote.Inst_Remotes" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         <service android:name=".CheckWifi.WifiService" />
         <service android:name=".DeviceService.DeviceService" />
+
     </application>
 
 </manifest>

@@ -32,9 +32,16 @@
         <item name="android:windowExitAnimation">@anim/fade_in</item>
     </style>
 
-    <style name="btn_hover">
+    <style name="btn_clickable_hover">
         <item name="android:duration">500</item>
-        <item name="android:background">@drawable/selector_btn</item>
+        <item name="android:background">@drawable/selector_btn_clickable</item>
+        <item name="android:textColor">@color/grey200</item>
     </style>
+
+    <!--<style name="btn_unclickable_hover">
+        <item name="android:duration">500</item>
+        <item name="android:background">@drawable/selector_btn_unclickable</item>
+        <item name="android:textColor">@color/grey_text</item>
+    </style>-->
 
 </resources>

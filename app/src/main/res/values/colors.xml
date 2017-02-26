@@ -17,5 +17,8 @@
     <color name="stroke_dialog_bg">#585858</color>
     <color name="grey200">#EEEEEE</color>
     <color name="grey400">#BDBDBD</color>
+    <color name="grey_text">#E0E0E0</color>
+    <color name="grey_bg">#DEDEDE</color>
+    <color name="main_grey">#888888</color>
 
 </resources>

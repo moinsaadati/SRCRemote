@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Setting_Card"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <FrameLayout
+        android:id="@+id/fl_mainHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_setting_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:gravity="left"
+            android:padding="2dp"
+            android:text="100"
+            android:textColor="@color/main_red"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_setting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:padding="2dp"
+            android:text="@string/setting"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp"
+
+            android:background="@color/grey400" />
+
+    </FrameLayout>
+
+
+</android.support.v7.widget.CardView>

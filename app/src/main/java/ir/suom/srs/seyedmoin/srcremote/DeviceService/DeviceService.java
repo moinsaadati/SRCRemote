@@ -21,6 +21,9 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
+import ir.suom.srs.seyedmoin.srcremote.R;
+import ir.suom.srs.seyedmoin.srcremote.Socket.Client;
+import ir.suom.srs.seyedmoin.srcremote.Socket.SocketResult;
 
 public class DeviceService extends Service {
 
@@ -35,6 +38,8 @@ public class DeviceService extends Service {
 
     // SharedPreference
     SharedPreferences local_pref;
+
+    Intent intent;
 
     @Override
     public void onCreate() {
@@ -68,7 +73,7 @@ public class DeviceService extends Service {
 
             Log.e("Service", "True");
 
-            Intent intent = new Intent();
+            intent = new Intent();
             intent.setAction(Constants.Action_DeviceService);
 
             // Moin Saadati's Comment : Flag for Connecting Status
@@ -114,7 +119,9 @@ public class DeviceService extends Service {
                         int id = mWifiManager.addNetwork(wc);
                         if (mWifiManager.enableNetwork(id, true)) {
                             //tv_status.setText("Connecte to NoBoDy");
+                            Log.e("WC:", "TRUE");
                             flag = 1;
+
                         } else {
                             //tv_status.setText("Not Connect");
                             flag = 2;

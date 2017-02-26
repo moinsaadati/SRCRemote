@@ -26,11 +26,6 @@
     <string name="wifi_massage_Connecting">در حال ارتباط با سیستم...</string>
     <string name="msg_near_to_connect">*لطفا برای اتصال به درب پارکینگ به آن نزدیک شوید.</string>
     <string name="msg_time_for_apply_control">*به طور معمول بازکردن یا بستن درب در حدود ۱۰ ثانیه به طول می‌انجامد.</string>
-    <string name="door_status">وضعیت درب</string>
-    <string name="door_status_closed">درب پارکینگ هم اکنون بسته می‌باشد...</string>
-    <string name="door_status_getting">در حال گرفتن وضعیت در...</string>
-    <string name="door_status_unknow">وضعیت درب نامعلوم است...</string>
-    <string name="open_door">باز کردن درب</string>
     <string name="massage">پیام</string>
     <string name="please_enter_sec_code">لطفا کد امنیتی را وارد نمایید:</string>
     <string name="reset_factory">بازگشت به تنظیمات کارخانه</string>
@@ -45,4 +40,49 @@
     <string name="copy_text">کپی شد.</string>
     <string name="not_find_devcie">درب اتوماتیک قابل شناسایی نیست.</string>
     <string name="enter_reset">لطفا reset را وارد کنید.</string>
+
+    <string name="close_door">بستن درب</string>
+    <string name="stop_door">نگه‌داشتن درب</string>
+    <string name="open_door">باز کردن درب</string>
+
+    <string name="door_status">وضعیت درب</string>
+    <string name="door_status_getting">در حال گرفتن وضعیت در...</string>
+    <string name="door_status_unknow">وضعیت درب نامعلوم است...</string>
+    <string name="door_status_closing">درب پارکینگ هم اکنون در حال بسته شدن می‌باشد...</string>
+    <string name="door_status_opening">درب پارکینگ هم اکنون در حال باز شدن می‌باشد...</string>
+    <string name="door_status_opened">درب پارکینگ کاملا باز می‌باشد...</string>
+    <string name="door_status_closed">درب پارکینگ کاملا بسته می‌باشد...</string>
+    <string name="door_status_stoped">درب پارکینگ متوقف شد...</string>
+    <string name="setting">تنظیمات</string>
+    <string name="number_100"></string>
+    <string name="iRemote">ریموت های من</string>
+
+
+    <array name="setting_option">
+        <item>زمان باز شدن درب ۱</item>
+        <item>زمان باز شدن درب ۲</item>
+        <item>زمان بسته شدن درب ۱</item>
+        <item>زمان بسته شدن درب ۲</item>
+        <item>زمان دور آهسته در باز شدن درب ۱</item>
+        <item>زمان دور آهسته در باز شدن درب ۲</item>
+        <item>زمان دور آهسته در بسته شدن درب ۱</item>
+        <item>زمان دور آهسته در بسته شدن درب ۲</item>
+        <item>زمان استارت با دور آهسته درب ۱</item>
+        <item>زمان استارت با دور آهسته درب ۲</item>
+        <item>تنظیم سرعت اصلی درب ۱</item>
+        <item>تنظیم سرعت اصلی درب ۲</item>
+        <item>تنظیم سرعت آهسته درب ۱</item>
+        <item>تنظیم سرعت آهسته درب ۲</item>
+        <item>تنظیم سرعت استارت اولیه درب ۱</item>
+        <item>تنظیم سرعت استارت اولیه درب ۲</item>
+        <item>بسته شدن خودکار</item>
+        <item>زمان بسته شدن خودکار پس از عبور از چشمی</item>
+        <item>تاخیر در باز شدن درب ۲</item>
+        <item>تاخیر در بسته شدن درب ۱</item>
+        <item>درب تک لنگه</item>
+        <item>فشار نهایی در بسته شدن</item>
+        <item>زمان فشار نهایی در بسته شدن</item>
+    </array>
+
+
 </resources>
