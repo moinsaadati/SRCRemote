@@ -5,10 +5,12 @@
     android:id="@+id/activity_inst_remotes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="ir.suom.srs.seyedmoin.srcremote.Inst_Panel.Inst_Remotes">
 
     <FrameLayout
+        android:id="@+id/fl_action_bar"
         android:layout_width="match_parent"
         android:layout_height="130dp">
 
@@ -38,17 +40,14 @@
             android:layout_marginTop="15dp"
             android:src="@drawable/ic_arrow_right2" />
 
-        <!--  <android.support.design.widget.FloatingActionButton
-              android:id="@+id/fab"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="bottom"
-              android:layout_marginLeft="30dp"
-              android:backgroundTint="@color/main_red"
-              android:src="@drawable/ic_plus"
-              app:fabSize="normal" />-->
-
-
+        <ImageButton
+            android:id="@+id/ibtn_add_remote"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/selector_btn_circle_clickable"
+            android:src="@drawable/ic_plus" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView

@@ -23,7 +23,7 @@
             android:layout_gravity="right"
             android:text="@string/door_status_getting"
             android:textColor="@color/black"
-            android:textSize="17sp" />
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btn_control"
@@ -34,7 +34,7 @@
             android:onClick="OnClickBtnControl"
             android:text="@string/open_door"
             android:textColor="@color/grey200"
-            android:textSize="29sp" />
+            android:textSize="29dp" />
 
     </LinearLayout>
 
@@ -48,6 +48,6 @@
         android:layout_marginRight="15dp"
         android:text="@string/msg_near_to_connect"
         android:textColor="@color/text_black"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
 </FrameLayout>

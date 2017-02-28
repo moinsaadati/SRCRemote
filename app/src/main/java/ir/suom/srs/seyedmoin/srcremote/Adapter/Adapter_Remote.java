@@ -3,7 +3,9 @@ package ir.suom.srs.seyedmoin.srcremote.Adapter;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ir.suom.srs.seyedmoin.srcremote.Model.remote;
+import ir.suom.srs.seyedmoin.srcremote.Model.setting;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
 public class Adapter_Remote extends RecyclerView.Adapter<Adapter_Remote.ViewHolder> {
@@ -46,13 +49,13 @@ public class Adapter_Remote extends RecyclerView.Adapter<Adapter_Remote.ViewHold
 
         }
 
-
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
                 mItemClickListener.onItemClick(itemView, getPosition());
             }
         }
+
     }
 
     public interface OnItemClickListener {
@@ -82,5 +85,11 @@ public class Adapter_Remote extends RecyclerView.Adapter<Adapter_Remote.ViewHold
         Typeface tp = Typeface.createFromAsset(mContext.getAssets(), mContext.getString(R.string.font_iransanz));
         holder.tv_remote_title.setText(rem.getTitle());
         holder.tv_remote_title.setTypeface(tp);
+    }
+
+    public void Swap(ArrayList<remote> remotes) {
+        this.remotes.clear();
+        this.remotes.addAll(remotes);
+        notifyDataSetChanged();
     }
 }

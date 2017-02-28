@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/edit_name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,44 +11,41 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/tv_title_reset_device"
+        android:id="@+id/tv_setting_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_reset_factory"
+        android:text="@string/setting_tittle"
         android:textColor="@color/black"
         android:textSize="17dp" />
 
     <TextView
-        android:id="@+id/tv_for_reset_device"
+        android:id="@+id/tv_setting_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/msg_for_reset_device"
+        android:text="@string/setting_description"
         android:textColor="@color/black"
         android:textSize="13dp" />
 
-    <EditText
-        android:id="@+id/et_reset_device"
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/dissb_set"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:background="@android:color/transparent"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="15dp"
-        android:background="@color/grey400" />
+        android:layout_marginTop="15dp"
+        app:dsb_indicatorColor="@color/main_red"
+        app:dsb_max="100"
+        app:dsb_min="0"
+        app:dsb_progressColor="@color/main_red"
+        app:dsb_rippleColor="@color/red_text"
+        app:dsb_thumbSize="7dp"
+        app:dsb_trackColor="@color/blueDark" />
 
     <Button
-        android:id="@+id/btn_reset_factory"
+        android:id="@+id/btn_back_setting"
         style="@style/btn_clickable_hover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/reset"
+        android:layout_marginTop="20dp"
+        android:text="@string/save_and_back"
         android:textColor="@color/white"
         android:textSize="17dp" />
 

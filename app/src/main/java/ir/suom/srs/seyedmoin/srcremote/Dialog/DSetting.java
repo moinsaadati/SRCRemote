@@ -16,46 +16,60 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import fr.tvbarthel.lib.blurdialogfragment.SupportBlurDialogFragment;
 import ir.suom.srs.seyedmoin.srcremote.CheckWifi.Constants;
 import ir.suom.srs.seyedmoin.srcremote.R;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
+import static ir.suom.srs.seyedmoin.srcremote.R.id.tv_device_id;
 
-/**
- * Created by seyedmoin on 2/17/17.
- */
-
-public class DShow_DID extends SupportBlurDialogFragment {
+public class DSetting extends SupportBlurDialogFragment {
 
     // Moin Saadati's Comment : Dialog For ResetDevice
     // 2/17/17 7:11 PM
-    TextView tv_title_show_did, tv_show_did, tv_device_id;
+
+    TextView tv_setting_tittle, tv_setting_description;
+    Button btn_back_and_save;
+    DiscreteSeekBar dissb_set;
+
+    CallBacks Call;
 
     // BlurDialog
     private static final String BUNDLE_KEY_DOWN_SCALE_FACTOR = "bundle_key_down_scale_factor";
     private static final String BUNDLE_KEY_BLUR_RADIUS = "bundle_key_blur_radius";
     private static final String BUNDLE_KEY_DIMMING = "bundle_key_dimming_effect";
     private static final String BUNDLE_KEY_DEBUG = "bundle_key_debug_effect";
+
+    // Properties Setting
+    private static final String BUNDLE_KEY_SETTING_INDEX = "bundle_key_setting_index";
+
     private int mRadius;
     private float mDownScaleFactor;
     private boolean mDimming;
     private boolean mDebug;
+    private int setting_index;
 
     // SharedPreference
     SharedPreferences local_pref;
+    SharedPreferences.Editor local_pref_edit;
 
-    public static DShow_DID newInstance(int radius, float downScaleFactor, boolean dimming, boolean debug) {
-        DShow_DID fragment = new DShow_DID();
+    public static DSetting newInstance(int radius, float downScaleFactor
+            , boolean dimming, boolean debug
+            , int setting_index) {
+        DSetting fragment = new DSetting();
         Bundle args = new Bundle();
         args.putInt(BUNDLE_KEY_BLUR_RADIUS, radius);
         args.putFloat(BUNDLE_KEY_DOWN_SCALE_FACTOR, downScaleFactor);
         args.putBoolean(BUNDLE_KEY_DIMMING, dimming);
         args.putBoolean(BUNDLE_KEY_DEBUG, debug);
+
+        // Get Properties
+        args.putInt(BUNDLE_KEY_SETTING_INDEX, setting_index);
 
         fragment.setArguments(args);
 
@@ -71,24 +85,24 @@ public class DShow_DID extends SupportBlurDialogFragment {
         mDownScaleFactor = args.getFloat(BUNDLE_KEY_DOWN_SCALE_FACTOR);
         mDimming = args.getBoolean(BUNDLE_KEY_DIMMING);
         mDebug = args.getBoolean(BUNDLE_KEY_DEBUG);
+        setting_index = args.getInt(BUNDLE_KEY_SETTING_INDEX);
+
+        this.Call = (CallBacks) activity;
     }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         local_pref = getActivity().getSharedPreferences(Constants.Pref_Name, Context.MODE_PRIVATE);
-
+        local_pref_edit = local_pref.edit();
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.layout_dialog_show_did, container, false);
-
+        View rootView = inflater.inflate(R.layout.layout_dialog_set_setting, container, false);
         return rootView;
     }
 
@@ -99,25 +113,28 @@ public class DShow_DID extends SupportBlurDialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Typeface tp = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.font_iransanz));
+        dissb_set = (DiscreteSeekBar) view.findViewById(R.id.dissb_set);
+        tv_setting_tittle = (TextView) view.findViewById(R.id.tv_setting_title);
+        tv_setting_description = (TextView) view.findViewById(R.id.tv_setting_description);
+        btn_back_and_save = (Button) view.findViewById(R.id.btn_back_setting);
 
-        tv_device_id = (TextView) view.findViewById(R.id.tv_device_id);
-        tv_show_did = (TextView) view.findViewById(R.id.tv_show_did);
-        tv_title_show_did = (TextView) view.findViewById(R.id.tv_title_show_did);
+        tv_setting_description.setTypeface(tp);
+        tv_setting_tittle.setTypeface(tp);
+        btn_back_and_save.setTypeface(tp);
 
-        tv_device_id.setTypeface(tp);
-        tv_title_show_did.setTypeface(tp);
-        tv_show_did.setTypeface(tp);
+        String[] setting_tittles = getResources().getStringArray(R.array.setting_option);
+        String[] setting_descriptions = getResources().getStringArray(R.array.setting_option_description);
 
-        tv_device_id.setText(local_pref.getString(Constants.KEY_Device_ID, ""));
+        tv_setting_tittle.setText(setting_tittles[setting_index]);
+        tv_setting_description.setText(setting_descriptions[setting_index]);
 
-        tv_device_id.setOnLongClickListener(new View.OnLongClickListener() {
+        btn_back_and_save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("Device ID", tv_device_id.getText().toString());
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(getActivity().getBaseContext(), R.string.copy_text, Toast.LENGTH_SHORT).show();
-                return false;
+            public void onClick(View view) {
+                local_pref_edit.putString("opt" + setting_index, String.valueOf(dissb_set.getProgress()));
+                local_pref_edit.commit();
+                dismiss();
+                Call.OnComplateLoginDialog();
             }
         });
 
@@ -141,5 +158,10 @@ public class DShow_DID extends SupportBlurDialogFragment {
         return dialog;
     }
 
+    // Moin Saadati's Comment : For Save And Reload ListSetting
+    // 2/27/17 2:21 PM
+    public interface CallBacks {
+        public void OnComplateLoginDialog();
+    }
 
 }

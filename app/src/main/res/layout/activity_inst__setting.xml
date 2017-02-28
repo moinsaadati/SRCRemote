@@ -1,45 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_inst_setting"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context="ir.suom.srs.seyedmoin.srcremote.Inst_Panel.Inst_Setting">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@color/grey_bg">
-
-        <ImageView
-            android:id="@+id/iv_icon_back"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ic_arrow_right2" />
-
-        <TextView
-            android:id="@+id/tv_main_setting_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp"
-            android:text="@string/main_setting_device"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
-    </FrameLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_settings"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp">
+        android:orientation="vertical">
 
-    </android.support.v7.widget.RecyclerView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/grey_bg">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/iv_icon_back"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_arrow_right2" />
+
+            <TextView
+                android:id="@+id/tv_main_setting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:text="@string/main_setting_device"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_get_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/selector_btn_clickable"
+                    android:text="@string/get_setting"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_send_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/main_red"
+        android:text="@string/send_setting"
+        android:textColor="@color/white" />
+
+
+</FrameLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Image display in background in select state -->
+    <item android:drawable="@drawable/btn_circle_unclickable" android:state_pressed="true" />
+    <!-- Default state -->
+    <item android:drawable="@drawable/btn_circle_clickable"/>
+
+</selector>

@@ -56,9 +56,48 @@
     <string name="setting">تنظیمات</string>
     <string name="number_100"></string>
     <string name="iRemote">ریموت های من</string>
+    <string name="get_setting">دریافت تنظیمات</string>
+    <string name="send_setting">ارسال تنظیمات</string>
+    <string name="not_access_to_add_remote">این قابلیت هنوز به برنامه اضافه نشده است.</string>
+    <string name="add_remote">اضافه کردن ریموت</string>
+    <string name="setting_description">توضیحات تنظیم</string>
+    <string name="setting_tittle">عنوان تنظیم</string>
+    <string name="back">بازگشت</string>
+    <string name="save_and_back">ذخیره و بازگشت</string>
+    <string name="remote">ریموت</string>
+    <string name="delete">حذف</string>
+    <string name="delete_remote">حذف ریموت</string>
+    <string name="no_set">عدم تنظیم</string>
 
 
     <array name="setting_option">
+        <item>زمان باز شدن درب ۱</item>
+        <item>زمان باز شدن درب ۲</item>
+        <item>زمان بسته شدن درب ۱</item>
+        <item>زمان بسته شدن درب ۲</item>
+        <item>زمان دور آهسته در باز شدن درب ۱</item>
+        <item>زمان دور آهسته در باز شدن درب ۲</item>
+        <item>زمان دور آهسته در بسته شدن درب ۱</item>
+        <item>زمان دور آهسته در بسته شدن درب ۲</item>
+        <item>زمان استارت با دور آهسته درب ۱</item>
+        <item>زمان استارت با دور آهسته درب ۲</item>
+        <item>تنظیم سرعت اصلی درب ۱</item>
+        <item>تنظیم سرعت اصلی درب ۲</item>
+        <item>تنظیم سرعت آهسته درب ۱</item>
+        <item>تنظیم سرعت آهسته درب ۲</item>
+        <item>تنظیم سرعت استارت اولیه درب ۱</item>
+        <item>تنظیم سرعت استارت اولیه درب ۲</item>
+        <item>بسته شدن خودکار</item>
+        <item>زمان بسته شدن خودکار پس از عبور از چشمی</item>
+        <item>تاخیر در باز شدن درب ۲</item>
+        <item>تاخیر در بسته شدن درب ۱</item>
+        <item>درب تک لنگه</item>
+        <item>فشار نهایی در بسته شدن</item>
+        <item>زمان فشار نهایی در بسته شدن</item>
+    </array>
+
+
+    <array name="setting_option_description">
         <item>زمان باز شدن درب ۱</item>
         <item>زمان باز شدن درب ۲</item>
         <item>زمان بسته شدن درب ۱</item>

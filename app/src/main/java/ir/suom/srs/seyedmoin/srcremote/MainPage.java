@@ -148,7 +148,7 @@ public class MainPage extends AppCompatActivity {
     // 2/10/17 4:26 PM
     private void UIControl(int flag) {
 
-        final Handler handler = new Handler();
+        //final Handler handler = new Handler();
 
         iv_massage_wifi.setVisibility(View.VISIBLE);
         tv_massage_wifi.setVisibility(View.VISIBLE);
@@ -170,14 +170,13 @@ public class MainPage extends AppCompatActivity {
 
 
             // Get Door Status
-            handler.postDelayed(new Runnable() {
+           /* handler.postDelayed(new Runnable() {
                 public void run() {
                     //DefineSocketSend(Constants.GET_DOOR_STATUS);
                     Toast.makeText(getBaseContext(), "Toast", Toast.LENGTH_SHORT).show();
                     handler.postDelayed(this, INTERVAL); //now is every
                 }
-            }, INTERVAL); //Every
-
+            }, INTERVAL); //Every*/
 
         }
         if (flag == 2) {

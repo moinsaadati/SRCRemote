@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/please_enter_sec_code"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="17dp" />
 
     <EditText
         android:id="@+id/et_pwd_adm"

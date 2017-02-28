@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/device_id"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="17dp" />
 
     <TextView
         android:id="@+id/tv_show_did"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/msg_for_show_did"
         android:textColor="@color/black"
-        android:textSize="13sp" />
+        android:textSize="13dp" />
 
     <TextView
         android:id="@+id/tv_device_id"
@@ -35,7 +35,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/text_black"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textStyle="bold" />
 
     <View

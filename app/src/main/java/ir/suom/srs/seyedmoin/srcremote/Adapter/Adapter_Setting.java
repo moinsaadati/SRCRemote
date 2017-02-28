@@ -92,4 +92,11 @@ public class Adapter_Setting extends RecyclerView.Adapter<Adapter_Setting.ViewHo
         holder.tv_setting_title.setText(set.getTittle());
 
     }
+
+    public void Swap(ArrayList<setting> settings) {
+        this.settings.clear();
+        this.settings.addAll(settings);
+        notifyDataSetChanged();
+    }
+
 }

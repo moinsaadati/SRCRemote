@@ -11,12 +11,19 @@
 
         <ImageView
             android:id="@+id/iv_icon_remote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical|right"
-            android:layout_marginRight="30dp"
-            android:src="@drawable/ic_plus"
-            android:tint="@color/blueDark" />
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_remote_dd" />
+
+        <ImageView
+            android:id="@+id/iv_icon_action"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_ellipsis_h" />
 
         <TextView
             android:id="@+id/tv_remote_title"
@@ -27,7 +34,7 @@
             android:layout_marginRight="60dp"
             android:gravity="right"
             android:padding="2dp"
-            android:text="@string/setting"
+            android:text="@string/remote"
             android:textColor="@color/black"
             android:textSize="15dp" />
 
